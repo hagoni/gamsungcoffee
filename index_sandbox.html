@@ -1,0 +1,628 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"./view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $root;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=1260">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="stylesheet" href="<?=$root?>/css/fullpage.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<?php
+include_once('inc/header.php');
+?>
+<div id="fullpage" class="fullpage-wrapper">
+	<!-- main_visual start -->
+	<div class="main_visual rel h100 bg fp-section section" id="section0" data-anchor="section-main_visual" data-index="1">
+		<div class="mv_in">
+			<div class="swiper-container h100">
+				<ul class="swiper-wrapper h100">
+					<li class="swiper-slide slide1 h100"></li>
+					<li class="swiper-slide slide2 h100"></li>
+					<li class="swiper-slide slide3 h100"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mv_bot abs">
+			<div class="inner">
+				<ul class="fs_def t_center">
+					<li>
+						<p class="num_wrap">
+							<span class="num num-1" data-number="200"></span>
+							<span>개</span>
+						</p>
+						<p class="li_tti"><img src="<?=$root?>/img/main/new/mv_li1.png" alt="가맹점수"></p>
+					</li>
+					<li>
+						<p class="num_wrap">
+							<span class="num num-2"  data-number="12492"></span>
+							<span>잔</span>
+						</p>
+						<p class="li_tti"><img src="<?=$root?>/img/main/new/mv_li2.png" alt="아메리카노 일일 판매 수"></p>
+					</li>
+					<li>
+						<p class="num_wrap">
+							<span class="num num-3"  data-number="5854"></span>
+							<span>잔</span>
+						</p>
+						<p class="li_tti"><img src="<?=$root?>/img/main/new/mv_li3.png" alt="시그니처 메뉴 일일 판매 수"></p>
+					</li>
+					<li>
+						<p class="num_wrap">
+							<span class="num num-4" data-number="20"></span>
+							<span>%</span>
+						</p>
+						<p class="li_tti"><img src="<?=$root?>/img/main/new/mv_li4.png" alt="감성잡화점 일일 총매출 비"></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<button type="button" class="mv_btns mv_prev">이전</button>
+		<button type="button" class="mv_btns mv_next">다음</button>
+	</div>
+	<!-- //main_visual end -->
+	<!-- gamsung start -->
+	<div class="gamsung rel h100 fp-section section" id="section1" data-anchor="section-gamsung" data-index="2">
+		<div class="center_cont">
+			<div class="title_area">
+				<p class="stitle"><img src="<?=$root?>/img/main/new/gamsung_sttl.png" alt="당신이 꿈꿔왔던 상상속의 브랜드, 우리가 만듭니다"></p>
+				<div class="t_right">
+					<p class="box_stitle">전 세대의 마음을 움직이는</p>
+					<p class="title"><img src="<?=$root?>/img/main/new/gamsung_ttl.png" alt="감성잡화점"></p>
+				</div>
+			</div>
+			<ul class="cont_ul">
+				<li>
+					<img src="<?=$root?>/img/main/new/gamsung_li1.png" alt="">
+				</li>
+				<li>
+					<img src="<?=$root?>/img/main/new/gamsung_li2.png" alt="">
+				</li>
+				<li>
+					<img src="<?=$root?>/img/main/new/gamsung_li3.png" alt="">
+				</li>
+			</ul>
+			<div class="gamsung_slide">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/gamsung_sl1.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/gamsung_sl2.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/gamsung_sl3.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/gamsung_sl4.jpg" alt=""></li>
+					</ul>
+				</div>
+				<ul class="gamsung_paging fs_def">
+					<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+					<li><a href="#none"></a></li>
+				</ul>
+			</div>
+			<div class="text_area">
+				<p class="gamsung_txt"><img src="<?=$root?>/img/main/new/gamsung_txt.png" alt="남들이 하지 않는 것을 잘해내는 유니크함"></p>
+				<p class="text">
+					가장 먼저 선점해야 시장의 중심이 될 수 있습니다.<br>
+					<em>핫한 열풍의 주인공은 언제나 감성커피에서 가장 먼저 만나보실 수 있습니다</em>
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- //gamsung end -->
+	<!-- collabo start -->
+	<div class="collabo rel h100 fp-section section" id="section2" data-anchor="section-collabo" data-index="3">
+		<div class="inner h100">
+			<div class="ttl_area">
+				<p class="collabo_ttl"><img src="<?=$root?>/img/main/new/collabo_ttl.png" alt="대형 브랜드와의 협업 콜라보 상품 개발"></p>
+				<p class="collabo_text">
+					한 발 앞선 트렌디한 신메뉴 개발.<br>
+					<em>가장 먼저 선점해야 시장의 중심이 될 수 있습니다.</em>
+				</p>
+				<a href="<?=$root?>/html/menu_1.html" class="collabo_link">콜라보 메뉴 보기</a>
+			</div>
+			<div class="collabo_slide bg">
+				<div class="swiper-container h100">
+					<ul class="swiper-wrapper h100">
+						<li class="swiper-slide slide1">
+							<div class="img_area bg h100"></div>
+							<div class="text_area1 text_area">
+								<p class="collabo_logo"><img src="<?=$root?>/img/main/new/collabo_logo1.png" alt="감성커피 X HERSHEY'S"></p>
+								<p class="collabo_text">
+									세계 최고 초콜릿 전문기업<br>
+									<em>HERSEY’S 와 콜라보는 감성커피가 유일합니다.</em>
+								</p>
+							</div>
+						</li>
+						<li class="swiper-slide slide2">
+							<div class="img_area bg h100"></div>
+							<div class="text_area2 text_area">
+								<p class="collabo_logo"><img src="<?=$root?>/img/main/new/collabo_logo2.png" alt="감성커피 X 말랑카우"></p>
+								<p class="collabo_text">
+									푹신푹신한 말랑카우!<br>
+									<em>말랑카우 와 콜라보는 감성커피가 유일합니다.</em>
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="finger bg h100"></div>
+		</div>
+	</div>
+	<!-- //collabo end -->
+	<!-- trendy start -->
+	<div class="trendy rel h100 fp-section section" id="section3" data-anchor="section-trendy" data-index="4">
+		<div class="trendy_inner h100">
+			<div class="ttl_area">
+				<p class="trendy_ttl"><img src="<?=$root?>/img/main/new/trendy_ttl.png" alt="가장 트렌디한 커피를 만나는 방법"></p>
+				<p class="trendy_sttl">이런 커피가 있었어?</p>
+				<p class="trendy_text">
+					우연히 알게된 트렌디한 커피가 있다면<br>
+					망설이지 말고 감성커피로 향해 주세요.
+				</p>
+				<a href="<?=$root?>/html/menu_2.html?sca=2" class="trendy_link">메뉴 보기</a>
+			</div>
+			<div class="trendy_slide bg w100">
+				<div class="swiper-container h100 w100">
+					<ul class="swiper-wrapper h100 w100">
+						<li class="swiper-slide slide1 w100" data-text="아메리카노와 달달한<br>크림의 환상의 조합!" data-index="1">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide2 w100" data-text="대만에서 건너온<br>흑설탕과 버블의 조화!" data-index="2">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide3 w100" data-text="모카라떼와 다양한<br>토핑의 달콤한 조화!" data-index="3">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide4 w100" data-text="딸기에이드와 버블의<br>톡톡튀는 만남!" data-index="4">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide5 w100" data-text="딸기에이드와 버블의<br>톡톡튀는 만남!" data-index="5">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide6 w100" data-text="야쿠르트와 달콤한<br>젤리가 있는 쉐이크" data-index="6">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+						<li class="swiper-slide slide7 w100" data-text="마시멜로우와 솜사탕의<br>달콤한 조화!" data-index="7">
+							<div class="img_area bg h100 w100"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="finger bg h100"></div>
+			<div class="trendy_circ h100">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper trendy_paging">
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico1.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								아메리카노와 달달한<br>
+								크림의 환상의 조합!
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico2.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								대만에서 건너온<br>
+								흑설탕과 버블의 조화!
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico3.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								모카라떼와 다양한<br>
+								토핑의 달콤한 조화!
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico4.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								딸기에이드와 버블의<br>
+								톡톡튀는 만남!
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico5.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								딸기에이드와 버블의<br>
+								톡톡튀는 만남!
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico6.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								야쿠르트와 달콤한<br>
+								젤리가 있는 쉐이크
+							</p>
+						</li>
+						<li class="swiper-slide">
+							<div class="circ">
+								<span class="ico"><img src="<?=$root?>/img/main/new/trendy_ico7.png" alt=""></span>
+							</div>
+							<p class="pg_text">
+								마시멜로우와 솜사탕의<br>
+								달콤한 조화!
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //trendy end -->
+	<div class="wrapper fp-section section" id="section4" data-anchor="section-wrapper" data-index="5">
+		<!-- story start -->
+		<div class="story">
+			<div class="center">
+				<div class="title_area">
+					<p class="box_stitle">감성커피 성공스토리</p>
+					<p class="img_title"><img src="<?=$root?>/img/main/new/story_ttl.png" alt="#진한커피 찐한 성공"></p>
+				</div>
+				<ul>
+					<li class="li1">
+						<a href="#none" class="li_ttl"><img src="<?=$root?>/img/main/new/story_ttl1.png" alt="다점포 매장 운영 비율 20%"></a>
+						<div class="li_img"><img src="<?=$root?>/img/main/new/story_img1.png" alt=""></div>
+						<div class="li_bar el1_1"><span></span></div>
+						<p class="li_stext">다점포창업도 ‘감성커피’로! 전주에서 붐을 일으키고 있습니다</p>
+					</li>
+					<li class="li2">
+						<a href="#none" class="li_ttl"><img src="<?=$root?>/img/main/new/story_ttl2.png" alt="11개월만에 2호점을 개설하다"></a>
+						<div class="li_img"><img src="<?=$root?>/img/main/new/story_img2.png" alt=""></div>
+						<div class="li_bar el1_2"><span></span></div>
+						<p class="li_stext">다점포 매장 운영은 가맹점의 높은 브랜드 만족도가 선행되야 합니다.</p>
+					</li>
+					<li class="li3">
+						<a href="#none" class="li_ttl"><img src="<?=$root?>/img/main/new/story_ttl3.png" alt="시그니처 메뉴 판매비율 50%"></a>
+						<div class="li_img"><img src="<?=$root?>/img/main/new/story_img3.png" alt=""></div>
+						<div class="li_bar el1_3"><span></span></div>
+						<p class="li_stext">시그니처 메뉴에 대한 분명한 정체성으로 높은 만족도를 창출합니다</p>
+					</li>
+					<li class="li4">
+						<a href="#none" class="li_ttl"><img src="<?=$root?>/img/main/new/story_ttl4.png" alt="상생을 기반으로한 안전한 브랜드"></a>
+						<div class="li_img"><img src="<?=$root?>/img/main/new/story_img4.png" alt=""></div>
+						<div class="li_bar el1_4"><span></span></div>
+						<p class="li_stext">진정성 있는 상생을 기반으로한 프랜차이즈 시스템으로 함께 성공하겠습니다.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- //story end -->
+		<!-- brand start -->
+		<div class="brand">
+			<div class="brand_slide">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide slide1">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/new/brand_ttl1.png" alt="감성커피는 커피만을 판매하지 않습니다"></p>
+							<p class="sl_text">
+								10여가지 이상의 풍미로<br>
+								매일 다르게 즐기는 아메리카노.<br>
+								오직 감성커피에서만 경험할 수 있습니다.
+							</p>
+							<a href="<?=$root?>/html/brand_1.html#1" class="sl_link">자세히 보기</a>
+						</li>
+						<li class="swiper-slide slide2 mt_66">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/new/brand_ttl2.png" alt="카페 브랜드의 이케아를 추구합니다"></p>
+							<p class="sl_text">
+								고객이 브랜드를 보고 들어와<br>
+								커피를 마시고 나가는 일련의 모든 과정을<br>
+								세심하게 디자인합니다.
+							</p>
+							<a href="<?=$root?>/html/brand_2.html" class="sl_link">자세히 보기</a>
+						</li>
+						<li class="swiper-slide slide3"></li>
+						<li class="swiper-slide slide4 mt_66">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/new/brand_ttl4.png" alt="단순한 커피가 아닙니다"></p>
+							<p class="sl_text">
+								오리지널커피, 10가지 원두. <br>
+								새로움을 추구하는 고객 모두 즐길 수 있는,<br>
+								커피가 맛있는 카페입니다.
+							</p>
+							<a href="<?=$root?>/html/brand_3.html" class="sl_link">자세히 보기</a>
+						</li>
+						<li class="swiper-slide slide5"></li>
+						<li class="swiper-slide slide6 mt_66">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/new/brand_ttl6.png" alt="커피가 아닌 감성을 팝니다"></p>
+							<p class="sl_text">
+								감성을 중심으로 한 감성커피는 매장을 찾는<br>
+								고객님들이 공감하고<br>
+								위로 받을 수 있는 공간을 만들고자 노력합니다.
+							</p>
+							<a href="<?=$root?>/board/index.php?board=interior_01&sca=interior" class="sl_link">자세히 보기</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="dd_box">
+				<div class="dd_img"><img src="<?=$root?>/img/main/new/mouse.png" alt=""></div>
+				<button type="button" class="brand_btns brand_prev">이전</button>
+				<button type="button" class="brand_btns brand_next">다음</button>
+			</div>
+			<div class="swiper-pagination swiper-pagination-progressbar">
+	            <span class="swiper-pagination-progressbar-fill"></span>
+	        </div>
+		</div>
+		<!-- //brand end -->
+		<!-- sns start -->
+		<div class="sns over_h">
+			<div class="center">
+				<div class="page_title_area">
+					<div class="titles_wrap">
+						<p class="box_stitle">고객이 말하는 감성커피</p>
+						<p class="title"><img src="<?=$root?>/img/main/new/sns_ttl.png" alt="#넌 지금 커피가 땡긴다"></p>
+					</div>
+				</div>
+			</div>
+			<div class="insta">
+				<div class="insta_slide">
+					<div class="swiper-container">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img1.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img2.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img3.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img4.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img5.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img6.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#none" style="background-image:url('../img/main/new/insta_img7.jpg')">
+									<div class="text_area">
+										<div class="insta_logo"><img src="<?=$root?>/img/main/new/insta_logo.png" alt=""></div>
+										<p class="insta_text">
+											감성커피에는 요즘 핫한<br>
+											흑당 버블티까지!<br>
+											JMT JMT!
+										</p>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //notice end -->
+		<!-- cf start -->
+		<div class="cf">
+			<span class="ovl"></span>
+			<div class="video_wrap">
+				<iframe src="//player.vimeo.com/video/369755856?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+		</div>
+		<!-- //cf end -->
+<?php
+include_once('inc/footer.php');
+?>
+	</div>
+</div>
+
+<!-- 가맹문의 바 start -->
+<div class="inquiry_bar br_inquiry_bnr">
+	<div class="inner_1200 clearfix">
+		<form method="post" action="<?=$request_root?>/sms/sms_trans.php" class="bnr_inquiry" id="directSms1">
+			<input type="hidden" name="send" value="right">
+			<fieldset>
+				<legend class="indent">감성커피 가맹상담문의</legend>
+				<div class="clearfix">
+					<div class="type_tel f_left"><img src="<?=$root?>/img/common/inq_tel.png" alt="가맹문의 02-401-1966"></div>
+					<div class="type_txt type_tags f_left">
+						<label for="name0" class="type_txt_label">성함</label>
+						<input type="text" name="name" id="name0" class="input_name sms_name labeling" autocomplete="off">
+					</div>
+					<div class="type_txt type_tags f_left">
+						<label for="hp0" class="type_txt_label">전화번호</label>
+						<input type="text" name="hp" id="hp0" class="input_phone sms_phone labeling" autocomplete="off">
+					</div>
+					<div class="type_select type_tags f_left">
+						<select name="special_01" id="iqr_special" class="legion">
+							<option value="">가맹희망지역</option>
+							<option value="서울">서울</option>
+							<option value="부산">부산</option>
+							<option value="대구">대구</option>
+							<option value="인천">인천</option>
+							<option value="광주">광주</option>
+							<option value="대전">대전</option>
+							<option value="울산">울산</option>
+							<option value="세종">세종</option>
+							<option value="경기">경기</option>
+							<option value="강원">강원</option>
+							<option value="충북">충북</option>
+							<option value="충남">충남</option>
+							<option value="전북">전북</option>
+							<option value="전남">전남</option>
+							<option value="경북">경북</option>
+							<option value="경남">경남</option>
+							<option value="제주">제주</option>
+						</select>
+					</div>
+					<div class="type_chk fs_def f_left">
+						<input type="checkbox" id="chk_sms_agree0" name="chk_sms_agree">
+						<label for="chk_sms_agree0" class="chk_label"><a href="#none" class="btn_policy bindPolicyModalOpen" data-type="3">개인정보취급방침</a><br>동의하기</label>
+					</div>
+					<button type="submit" class="bindSmsSubmit btn_send f_right">문의하기</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<!-- //가맹문의 바 end -->
+
+<!-- 하단 가맹문의 바 start -->
+<div class="br_btns_wrap">
+	<a href="#section-main_visual" class="br_btn_top btn_scroll">TOP</a>
+	<a href="#none" class="br_btn_inq">가맹문의 버튼</a>
+</div>
+<?php
+include_once('inc/sitemap.php');
+?>
+<script>
+var CONST_REQUEST_ROOT = '<?=$request_root?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$root?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/scrolloverflow.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/fullpage.js?<?=$time?>"></script>
+<script src="//player.vimeo.com/api/player.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main_sandbox.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('type02', {
+			callback: popupCallback
+		});
+		new Popup('type03', {
+			callback: popupCallback
+		});
+		new Popup('type04', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.new_title{padding:6.25vw 0 4.6875vw}
+.menu_list{padding-bottom:14.6875vw}
+.menu_list li{width:44.375vw;height:63.125vw;margin-right:1.5625vw;margin-bottom:1.5625vw;border:1px solid rgba(187,187,187,0.5);box-sizing:border-box}
+.menu_list li:nth-child(2n){margin-right:0px}
+.menu_list .img{position:relative;height:43.4375vw}
+.menu_list .img::after{content:"";position:absolute;left:50%;bottom:-1px;margin-left:-20.1562vw;width:40.3125vw;height:1px;background:rgba(0,0,0,0.3)}
+.menu_list .menu_name{padding:4.5vw 1.875vw 0;font-family:'NotoSansKR-Medium';font-size:3.75vw;letter-spacing:-0.03em;text-align:center;color:#222}
+.menu_list .menu_eng{padding:1.5625vw 1.875vw 0;font-size:3.4375vw;letter-spacing:-0.03em;line-height:140%;text-align:center;color:#666}
+
+.collab_title{padding:0 0 4.375vw}
+</style>
+<div class="titles_wrap">
+    <p class="box_title">신메뉴&amp;콜라보메뉴</p>
+    <p class="page_title"><img src="<?=$root?>/img/page/menu/1/page_title.png" alt="넌 지금 커피가 떙긴다" class="w100"></p>
+    <span class="line"></span>
+</div>
+
+
+<?
+$sql = "select * from ".TABLE_LEFT."menu_sub_01 where view3_use = 1 and view3_check_10 = 0 order by view3_order desc, view3_write_day";
+$res = mysql_query($sql);
+$sub_cnt = 2;
+while ($lst = mysql_fetch_assoc($res)) {
+    $img = explode("||",$lst['view3_file']);
+?>
+<div class="new_menu layer">
+    <!-- <p class="new_title"><img src="<?=$root?>/img/page/menu/1/title1.png" alt="신메뉴" class="w100"></p> -->
+    <p class="new_title"><img src="<?=$request_root?>/upload/menu_sub_01<?=$img[1]?>" alt="메뉴타이틀" class="w100"></p>
+    <div class="inner swiper-container">
+        <div class="swiper-wrapper">
+            <div class="inner clearfix swiper-slide">
+                <ul id="newMenu" class="clearfix menu_list fs_def">
+        <?
+        $new_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_check_01 = {$lst['view3_idx']} order by view3_order desc, view3_write_day desc";
+        $new_res = mysql_query($new_sql);
+        while ($new_lst = mysql_fetch_assoc($new_res)) {
+            $new_img = explode("||",$new_lst['view3_file']);
+        ?>
+                    <li>
+                        <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$new_img[3]?>')">
+                        </div>
+                        <p class="menu_name ellipsis"><?=$new_lst['view3_title_01']?></p>
+                        <p class="menu_eng ellipsis"><?=$new_lst['view3_title_02']?></p>
+                    </li>
+        <?
+        }
+        ?>
+                </ul>
+            </div>
+            <?
+            $sub_sql = "select * from ".TABLE_LEFT."menu_sub_01 where view3_use = 1 and view3_check_10 != 0 and view3_check_09 = {$lst['view3_idx']} order by view3_write_day";
+            $sub_res = mysql_query($sub_sql);
+            $sub_num = mysql_num_rows($sub_res);
+            if ($sub_num > 0) {
+                while ($sub_lst = mysql_fetch_assoc($sub_res)) {
+                    $sub_img = explode("||",$sub_lst['view3_file']);
+                ?>
+                    <div class="inner clearfix swiper-slide">
+                        <ul id="newMenu" class="clearfix menu_list fs_def">
+                    <?
+                    $sub_menu_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_check_0".$sub_cnt." = {$sub_lst['view3_idx']} order by view3_write_day desc";
+                    $sub_menu_res = mysql_query($sub_menu_sql);
+                    while ($sub_menu_lst = mysql_fetch_assoc($sub_menu_res)) {
+                    $sub_menu_img = explode("||",$sub_menu_lst['view3_file']);
+                    ?>
+                            <li>
+                                <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$sub_menu_img[3]?>')">
+                                </div>
+                                <p class="menu_name ellipsis"><?=$sub_menu_lst['view3_title_01']?></p>
+                                <p class="menu_eng ellipsis"><?=$sub_menu_lst['view3_title_02']?></p>
+                            </li>
+                    <?
+                    }
+                    ?>
+                        </ul>
+                    </div>
+                <?
+
+                }
+            }
+            ?>
+        </div>
+    </div>
+</div>
+<?
+$sub_cnt++;
+}
+?>
+
+<!-- <div class="collab_menu layer">
+    <p class="collab_title"><img src="<?=$root?>/img/page/menu/1/title2.png" alt="콜라보 메뉴" class="w100"></p>
+    <div class="inner clearfix">
+        <ul id="collabMenu" class="menu_list fs_def">
+<?
+$col_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_sca != 6 and view3_check_01 = 2 order by view3_order desc, view3_write_day desc";
+$col_res = mysql_query($col_sql);
+while ($col_lst = mysql_fetch_assoc($col_res)) {
+    $col_img = explode("||",$col_lst['view3_file']);
+?>
+            <li>
+                <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$col_img[3]?>')">
+                </div>
+                <p class="menu_name ellipsis"><?=$col_lst['view3_title_01']?></p>
+                <p class="menu_eng ellipsis"><?=$col_lst['view3_title_02']?></p>
+            </li>
+<?
+}
+?>
+        </ul>
+    </div>
+</div> -->
+<script>
+(function($){
+    new Swiper('.new_menu .swiper-container',{
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }
+    });
+}(jQuery));
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

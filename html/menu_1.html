@@ -1,0 +1,220 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+@import url('../css/jquery.mCustomScrollbar.css');
+
+.page_title .grad{width:897px;background-image:url('../img/page/menu/01/grad_ttl.png')}
+.layer{margin-bottom:100px}
+.poster{width:552px;height:782px}
+.menu_list{width:573px;height:782px;}
+.menu_list li{position:relative;float:left;width:280px;height:384px;margin-right:13px;margin-bottom:14px;border:1px solid rgba(34,34,34,0.2);box-sizing:border-box}
+.menu_list li:nth-child(even){margin-right:0}
+.menu_list .img{position:relative;height:277px}
+.menu_list .img:after{content:'';position:absolute;left:50%;bottom:-1px;width:258px;height:1px;background:rgba(34,34,34,0.3);margin-left:-129px}
+.menu_name{padding:28px 20px 0;font-family:'NotoSansKR-Medium';font-size:20px;letter-spacing:-0.03em;color:#222}
+.menu_eng{padding:10px 20px 0;font-size:16px;letter-spacing:-0.03em;color:#666}
+.menu_list .menu_info{position:absolute;left:0;top:0;width:100%;height:100%;background:#eee8de;opacity:0;
+-webkit-transition:opacity .2s;
+transition:opacity .2s
+}
+.menu_info .text_area{position:relative;padding-bottom:17px}
+.menu_info .text_area:before{content:'';position:absolute;left:50%;bottom:0;margin-left:-10px;width:20px;height:1px;background:rgba(0,0,0,0.3)}
+.menu_list .info_img{left:0;top:0;width:100%;height:100%;background-repeat:no-repeat;background-position:50% 100%;background-size:100%}
+.menu_list li:hover{border-color:transparent}
+.menu_info .menu_name{padding-top:55px}
+.menu_list li:hover .menu_info{opacity:1}
+.menu_list li:last-child, .menu_list li:nth-last-child(2){margin-bottom:0}
+
+.mCSB_inside > .mCSB_container{margin-right:0}
+.mCSB_scrollTools{width:2px}
+</style>
+        <!-- 페이지 타이틀 start -->
+        <div class="page_title_area" data-motion-offset="3">
+            <div class="titles_wrap">
+                <p class="box_title">신메뉴 &amp; 콜라보메뉴</p>
+                <p class="page_title">
+                    <img src="<?=$root?>/img/page/menu/01/page_title.png" alt="넌 지금 커피가 땡긴다">
+                    <span class="grad grad_l el1_0"></span>
+                </p>
+            </div>
+        </div>
+        <!-- //페이지 타이틀 end -->
+
+<?
+$new_big_sql = "select * from ".TABLE_LEFT."menu_sub_01 where view3_use = 1 and view3_check_10 = 0 order by view3_write_day";
+$new_big_res = mysql_query($new_big_sql);
+$sub_cnt = 2;
+while ($new_big_lst = mysql_fetch_assoc($new_big_res)) {
+    $new_big_img = explode("||",$new_big_lst['view3_file']);
+?>
+        <!-- 신메뉴 start -->
+        <div class="new_menu layer" data-motion-offset="1">
+            <div class="page_title_area">
+                <div class="inner">
+            <?
+                if ($new_big_lst['view3_check_01'] == 1) {
+                    $line_pos = "line_l";
+                    $tit_pos = "";
+                } else {
+                    $line_pos = "line_r";
+                    $tit_pos = "t_right";
+                }
+            ?>
+                    <p class="page_title <?=$tit_pos?>">
+                        <img src="<?=$root?>/upload/menu_sub_01<?=$new_big_img[2]?>" alt="<?=$new_big_lst['view3_title_01']?>">
+                        <span class="line <?=$line_pos?>"><span class="el1_1"></span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="inner swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="inner clearfix swiper-slide">
+                <?
+                if ($new_big_lst['view3_sex'] == 1) {
+                    $img_pos = 'f_left';
+                    $div_pos = 'f_right';
+                } else {
+                    $img_pos = 'f_right';
+                    $div_pos = 'f_left';
+                }
+                ?>
+                        <!-- <div class="poster bg f_left" style="background-image:url('../img/page/menu/01/new_menu00.jpg')"></div> -->
+                        <div class="poster bg <?=$img_pos?>" style="background-image:url('<?=$request_root?>/upload/menu_sub_01<?=$new_big_img[3]?>')"></div>
+                        <ul id="newMenu" class="menu_list <?=$div_pos?> clearfix t_center">
+                <?
+                $new_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_check_01 = {$new_big_lst['view3_idx']} order by view3_order desc, view3_write_day desc";
+                $new_res = mysql_query($new_sql);
+                while ($new_lst = mysql_fetch_assoc($new_res)) {
+                $new_img = explode("||",$new_lst['view3_file']);
+                ?>
+                            <li>
+                                <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$new_img[3]?>')"></div>
+                                <p class="menu_name ellipsis"><?=$new_lst['view3_title_01']?></p>
+                                <p class="menu_eng ellipsis"><?=$new_lst['view3_title_02']?></p>
+                                <div class="menu_info">
+                                    <div class="info_img abs" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$new_img[4]?>')"></div>
+                                    <div class="text_area">
+                                        <p class="menu_name"><?=$new_lst['view3_title_01']?></p>
+                                        <p class="menu_eng"><?=$new_lst['view3_title_02']?></p>
+                                    </div>
+                                </div>
+                            </li>
+                <?
+                }
+                ?>
+
+                        </ul>
+                    </div>
+                <?
+                $sub_sql = "select * from ".TABLE_LEFT."menu_sub_01 where view3_use = 1 and view3_check_10 != 0 and view3_check_09 = {$new_big_lst['view3_idx']}";
+                $sub_res = mysql_query($sub_sql);
+                $sub_num = mysql_num_rows($sub_res);
+                if ($sub_num > 0) {
+                    while ($sub_lst = mysql_fetch_assoc($sub_res)) {
+                        $sub_img = explode("||",$sub_lst['view3_file']);
+                    ?>
+                        <div class="inner clearfix swiper-slide">
+                    <?
+                    if ($sub_lst['view3_sex'] == 1) {
+                        $img_pos = 'f_left';
+                        $div_pos = 'f_right';
+                    } else {
+                        $img_pos = 'f_right';
+                        $div_pos = 'f_left';
+                    }
+                    ?>
+                            <!-- <div class="poster bg f_left" style="background-image:url('../img/page/menu/01/new_menu00.jpg')"></div> -->
+                            <div class="poster bg <?=$img_pos?>" style="background-image:url('<?=$request_root?>/upload/menu_sub_01<?=$sub_img[3]?>')"></div>
+                            <ul id="newMenu" class="menu_list <?=$div_pos?> clearfix t_center">
+                    <?
+                    $sub_menu_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_check_0".$sub_cnt." = {$sub_lst['view3_idx']} order by view3_order desc, view3_write_day desc";
+                    $sub_menu_res = mysql_query($sub_menu_sql);
+                    while ($sub_menu_lst = mysql_fetch_assoc($sub_menu_res)) {
+                    $sub_menu_img = explode("||",$sub_menu_lst['view3_file']);
+                    ?>
+                                <li>
+                                    <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$sub_menu_img[3]?>')"></div>
+                                    <p class="menu_name ellipsis"><?=$sub_menu_lst['view3_title_01']?></p>
+                                    <p class="menu_eng ellipsis"><?=$sub_menu_lst['view3_title_02']?></p>
+                                    <div class="menu_info">
+                                        <div class="info_img abs" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$sub_menu_img[4]?>')"></div>
+                                        <div class="text_area">
+                                            <p class="menu_name"><?=$sub_menu_lst['view3_title_01']?></p>
+                                            <p class="menu_eng"><?=$sub_menu_lst['view3_title_02']?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                    <?
+                    }
+                    ?>
+
+                            </ul>
+                        </div>
+                    <?
+                    }
+                }
+                ?>
+                </div>
+            </div>
+        </div>
+        <!-- //신메뉴 end -->
+<?
+    $sub_cnt++;
+}
+?>
+
+<script src="<?=$root?>/js/jquery.mCustomScrollbar.concat.min.js?<?=$time?>"></script>
+<script>
+(function($) {
+    $(window).on('load', function() {
+        new YMotion([
+    		[
+                {el: '.el1_1', set: {width: "0%"}, to: {width: "100%"}, d: 0.6},
+    		],
+            [
+                {el: '.el2_1', set: {width: "0%"}, to: {width: "100%"}, d: 0.6},
+    		],
+            [
+                {el: '.el1_0', set: {backgroundPositionX: "0"}, to: {backgroundPositionX: "897", ease: Back.Power0}, d: 2.4},
+            ],
+    	]).activate();
+
+        if($('#newMenu li').length > 4) {
+            $('#newMenu').mCustomScrollbar({
+                // autoHideScrollbar: true,
+                snapAmount: 30,
+                keyboard: {scrollAmount: 30},
+                mouseWheel: {
+                    deltaFactor: 30,
+                    preventDefault: true
+                },
+                scrollInertia: 0,
+            });
+        }
+        if($('#collabMenu li').length > 4) {
+            $('#collabMenu').mCustomScrollbar({
+                // autoHideScrollbar: true,
+                snapAmount: 30,
+                keyboard: {scrollAmount: 30},
+                mouseWheel: {
+                    deltaFactor: 30,
+                    preventDefault: true
+                },
+                scrollInertia: 0,
+            });
+        }
+    });
+
+    new Swiper('.new_menu .swiper-container',{
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }
+    });
+}(jQuery));
+</script>
+
+<?php
+include_once('../inc/bottom.php');
+?>

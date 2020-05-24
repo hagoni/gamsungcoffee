@@ -1,0 +1,171 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title .grad{width:786px;background-image:url('../img/page/brand/03/grad_ttl.png')}
+.line_title{position:relative;margin-left:-50px;text-align:center}
+.line_title:before{content:'';position:absolute;left:0;top:50%;width:50%;height:1px;background-color:#222}
+.line_title.right{margin-left:50px}
+.line_title.right:before{left:auto;right:0}
+.line_title img{position:relative;z-index:1}
+
+.layer1{padding:100px 0;background-color:#f3f3f3}
+.layer1 .center{padding-top:45px}
+.layer1 .conts{position:relative;width:100%;height:660px}
+.layer1 .text_area{padding:50px 0 0 50px}
+.layer1 .text{padding-top:32px;color:#484848}
+.layer1 .lyr1_paging{position:absolute;left:750px;bottom:10px}
+.layer1 .lyr1_paging li{position:relative;margin-top:40px}
+.layer1 .lyr1_paging li a{opacity:0.3}
+.layer1 .lyr1_paging li .dec{opacity:0;position:absolute;right:-76px;top:-47px}
+.layer1 .lyr1_paging li .hover_area{position:absolute;left:0;top:0;width:332px;height:100%;z-index:2}
+.layer1 .lyr1_paging li:first-child .hover_area{width:351px}
+.layer1 .lyr1_paging li.swiper-pagination-bullet-active .dec, .layer1 .lyr1_paging li .hover_area:hover ~ .dec{opacity:1}
+.layer1 .lyr1_paging li.swiper-pagination-bullet-active a, .layer1 .lyr1_paging li .hover_area:hover + a{opacity:1}
+
+.layer2{overflow:hidden;height:500px;box-sizing:border-box}
+.layer2 .lyr2_bg{position:absolute;left:0;top:0;width:100%;height:100%;background-image:url('../img/page/brand/03/lyr2_bg.jpg')}
+.layer2 .z_up{position:relative;z-index:1}
+.layer2 .lyr2_ttl{padding:128px 0 16px;font-family:'TmonMonsori';font-size:150px;letter-spacing:-0.01em;color:#fff}
+.layer2 .lyr2_ttl span{margin-left:10px;font-family:'NotoSansKR-Bold';font-size:60px}
+
+.layer3{height:700px;background-color:#f3f3f3;box-sizing:border-box}
+.layer3 .lyr3_ttl{display:inline-block;position:relative}
+.layer3 .lyr3_ttl:before{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background-color:#000}
+.layer3 .lyr3_ttl1{padding-top:132px;margin-bottom:250px}
+.layer3 .text{top:326px;color:#222}
+.layer3 .lyr3_txt1{position:absolute;right:50%;margin-right:150px;text-align:right}
+.layer3 .lyr3_txt2{margin-left:150px;text-align:left}
+.layer3 .lyr3_slide{top:0;margin-left:-630px;width:1260px;height:100%}
+
+.layer4{position:relative;height:900px;padding-top:100px;background-color:#ded6cb;box-sizing:border-box}
+.layer4 .lyr4_ttl{padding-top:310px}
+.layer4 .lyr4_txt{padding:20px 0 226px;font-size:18px;line-height:167%;letter-spacing:-0.05em;color:#484848}
+.layer4 .lyr4_txt em{font-family:'NotoSansKR-Bold'}
+.layer4 .lyr4_img{bottom:0;margin-left:-227px}
+.layer4 .lyr4_logo{top:220px;margin-left:311px}
+.layer4 .lyr4_inner{position:absolute;left:50%;top:0;margin-left:-600px;width:1200px;height:100%;background-image:url('../img/page/brand/03/finger_bg.png')}
+.layer4 .lyr4_inner .finger{position:absolute;left:0;top:0;width:100%;height:100%;background-image:url('../img/page/brand/03/finger.png');z-index:10}
+.layer4 .lyr4_slide .slide1{background-image:url('../img/page/brand/03/lyr4_img1.png')}
+.layer4 .lyr4_slide .slide2{background-image:url('../img/page/brand/03/lyr4_img2.png')}
+.layer4 .lyr4_slide .slide3{background-image:url('../img/page/brand/03/lyr4_img3.png')}
+.layer4 .lyr4_slide .slide4{background-image:url('../img/page/brand/03/lyr4_img4.png')}
+.layer4 .lyr4_slide .slide5{background-image:url('../img/page/brand/03/lyr4_img5.png')}
+.layer4 .lyr4_slide .slide6{background-image:url('../img/page/brand/03/lyr4_img6.png')}
+</style>
+        <div class="page_title_area" data-motion-offset="1">
+            <div class="titles_wrap">
+                <p class="box_title">감성커피 독창성</p>
+                <p class="page_title">
+                    <img src="<?=$root?>/img/page/brand/03/page_title.jpg" alt="남들이 하지 않는 것을 잘해내는 유니크함">
+                    <span class="grad grad_l el1_0"></span>
+                    <span class="line line_l"><span class="el1_1"></span></span>
+                </p>
+                <p class="page_text">
+                    가장 먼저 선점해야 시장의 중심이 될 수 있습니다.<br>
+                    <em>핫한 열풍의 주인공은 언제나 감성커피에서 가장 먼저 만나보실 수 있습니다.</em>
+                </p>
+            </div>
+        </div>
+        <div class="layer1">
+            <div class="line_title">
+                <img src="<?=$root?>/img/page/brand/03/lyr1_ttl.jpg" alt="추억을 사다, 감성잡화점">
+            </div>
+            <div class="center">
+                <div class="lyr1_slide">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper conts">
+                            <li class="swiper-slide">
+                                <div class="img_area"><img src="<?=$root?>/img/page/brand/03/lyr1_img1.jpg" alt=""></div>
+                                <div class="text_area">
+                                    <p class="lyr1_ttl"><img src="<?=$root?>/img/page/brand/03/lyr1_ttl1.png" alt="세련된 레트로 브랜드"></p>
+                                    <p class="text">
+                                        감성잡화점은 젊은층에게는 신선함을,<br>
+                                        <em>어르신들에게는 추억을 선물하는 전 세대의 마음을 움직이는 브랜드입니다.</em>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="img_area"><img src="<?=$root?>/img/page/brand/03/lyr1_img2.jpg" alt=""></div>
+                                <div class="text_area">
+                                    <p class="lyr1_ttl"><img src="<?=$root?>/img/page/brand/03/lyr1_ttl2.png" alt="두가지를 탁월하게 완성하다 디자인 실용성"></p>
+                                    <p class="text">
+                                        감성잡화점은 감성커피 공간과 어울리는 브랜드와 제품을 만들었습니다.<br>
+                                        <em>품질이 입증된 구매도가 높은 제품에 감각적으로 눈길을 끄는 디자인을 입혔습니다.</em>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="lyr1_paging">
+                    <li class="on">
+                        <div class="hover_area"></div>
+                        <a href="#none"><img src="<?=$root?>/img/page/brand/03/lyr1_pg1.png" alt="#레트로 브랜드"></a>
+                        <div class="dec"><img src="<?=$root?>/img/page/brand/03/lyr1_dec1.png" alt=""></div>
+                    </li>
+                    <li>
+                        <div class="hover_area"></div>
+                        <a href="#none"><img src="<?=$root?>/img/page/brand/03/lyr1_pg2.png" alt="#디자인 실용성"></a>
+                        <div class="dec"><img src="<?=$root?>/img/page/brand/03/lyr1_dec1.png" alt=""></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layer2 rel t_center" data-motion-offset="2">
+            <div class="lyr2_bg bg el2_0"></div>
+            <div class="z_up">
+                <p class="lyr2_ttl"><i class="el2_1" data-number="<?=$settings_data['info_count_milkcaramel'];?>"></i><span>개</span></p>
+                <p class="lyr2_text"><img src="<?=$root?>/img/page/brand/03/lyr2_txt.png" alt="밀크-캬라멜 한달 판매 수"></p>
+            </div>
+        </div>
+        <div class="layer3 rel t_center">
+            <p class="lyr3_ttl1 lyr3_ttl"><img src="<?=$root?>/img/page/brand/03/lyr3_ttl1.png" alt="전 세대의 마음을 움직이는"></p>
+            <p class="lyr3_ttl2 lyr3_ttl"><img src="<?=$root?>/img/page/brand/03/lyr3_ttl2.png" alt="NEW 레트로 브랜드 감성"></p>
+            <p class="lyr3_txt1 text">
+                세련된 레트로 브랜드<br>
+                <em>고객의 마음을 사로잡다</em>
+            </p>
+            <p class="lyr3_txt2 text l50">
+                당신을 성공으로 이끄는<br>
+                <em>단 하나의 브랜드</em>
+            </p>
+            <div class="lyr3_slide l50">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/03/lyr3_img1.png" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/03/lyr3_img2.png" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/03/lyr3_img3.png" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/03/lyr3_img4.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="layer4 rel">
+            <div class="line_title right">
+                <img src="<?=$root?>/img/page/brand/03/lyr4_page_ttl.png" alt="대형브랜드와의 콜라보 메뉴 개발" style="background-color:#ded6cb;">
+            </div>
+            <div class="inner">
+                <p class="lyr4_ttl"><img data-src="<?=$root?>/img/page/brand/03/lyr4_ttl_(collabo).png" alt="감성커피가 유일합니다"></p>
+                <div class="lyr4_logo l50"><img data-src="<?=$root?>/img/page/brand/03/lyr4_logo_(collabo).png" alt="감성커피 콜라보"></div>
+            </div>
+            <div class="lyr4_inner bg">
+                <div class="finger bg"></div>
+                <div class="lyr4_slide h100">
+                    <div class="swiper-container h100">
+                        <ul class="swiper-wrapper h100">
+                            <li class="swiper-slide slide1 bg h100" data-bg="#ded6cb" data-collabo="hershey"></li>
+                            <li class="swiper-slide slide2 bg h100" data-bg="#ded6cb" data-collabo="hershey"></li>
+                            <li class="swiper-slide slide3 bg h100" data-bg="#ded6cb" data-collabo="hershey"></li>
+                            <!-- <li class="swiper-slide slide4 bg h100" data-bg="#e1e1e1" data-collabo="malangcow"></li>
+                            <li class="swiper-slide slide5 bg h100" data-bg="#e1e1e1" data-collabo="malangcow"></li>
+                            <li class="swiper-slide slide6 bg h100" data-bg="#e1e1e1" data-collabo="malangcow"></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script src="<?=$root?>/js/brand_3.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

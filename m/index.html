@@ -1,0 +1,344 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"../view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8").$_SERVER[REQUEST_URI];
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $pc;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="apple-touch-icon" href="<?=$root?>/img/apple-touch-icon.png">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+
+<?
+@include_once(ROOT_INC.'/statistics_head_include.php');
+?>
+
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+<!-- wrap start -->
+<div id="wrap">
+<?php
+include_once('inc/header.php');
+?>
+	<!-- main_visual start -->
+	<div class="main_visual">
+		<div class="main_visual_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+<?
+$main_sql = "select * from ".TABLE_LEFT."main_m_01 where view3_use = 1 order by view3_order desc, view3_write_day desc";
+$main_res = mysql_query($main_sql);
+while ($main_lst = mysql_fetch_assoc($main_res)) {
+    $main_img = explode("||",$main_lst['view3_file']);
+?>
+    <li class="swiper-slide"><img src="<?=$request_root?>/upload/main_m_01<?=$main_img[2]?>" alt="" class="w100"></li>
+<?
+}
+?>
+					<!-- <li class="swiper-slide"><img src="<?=$root?>/img/main/main_visual_sl1" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/main_visual_sl2" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/main_visual_sl3" alt="" class="w100"></li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="main_visual_title">
+			<ul class="fs_def">
+				<li>
+					<p class="main_ttl"><?=number_format($settings_data['info_count_store'])?><span> 개</span></p>
+					<p class=""><img src="<?=$root?>/img/main/main_visual_text1.png" alt="" class="w100"></p>
+				</li>
+				<li>
+					<p class="main_ttl"><?=number_format($settings_data['info_count_americano'])?><span> 개</span></p>
+					<p class=""><img src="<?=$root?>/img/main/main_visual_text2.png" alt="" class="w100"></p>
+				</li>
+				<li>
+					<p class="main_ttl"><?=number_format($settings_data['info_count_signature'])?><span> 개</span></p>
+					<p class=""><img src="<?=$root?>/img/main/main_visual_text3.png" alt="" class="w100"></p>
+				</li>
+				<li>
+					<p class="main_ttl"><?=number_format($settings_data['info_count_merchandise'])?><span> %</span></p>
+					<p class=""><img src="<?=$root?>/img/main/main_visual_text4.png" alt="" class="w100"></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //main_visual end -->
+	<!-- //unique start -->
+	<div class="unique">
+		<p class="unique_title"><img src="<?=$root?>/img/main/unique_title.png" alt="남들이 하지 않는 것을 잘해내는 유니크함" class="w100"></p>
+		<p class="unique_text main_text t_center fw_b">핫한 열풍의 주인공은 언제나<br><em>감성커피에서 가장 먼저 만나보실 수 있습니다.</em></p>
+		<div class="unique_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/unique_sl1.jpg" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/unique_sl2.jpg" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/unique_sl3.jpg" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/unique_sl4.jpg" alt="" class="w100"></li>
+				</ul>
+			</div>
+		</div>
+		<p class="unique_bottom"><img src="<?=$root?>/img/main/unique_btext.png" alt="세련된 레트로 브랜드 고객의 마음을 사로잡다.." class="w100"></p>
+	</div>
+	<!-- //unique end -->
+	<!-- collabo start -->
+	<div class="collabo">
+		<p class="col_title"><img src="<?=$root?>/img/main/col_title.png" alt="대형 브랜드와의 협업 콜라보 상품 개발" class="w100"></p>
+		<p class="col_text main_text fw_b t_center">
+			한 발 앞선 트렌디한 신메뉴 개발.<br>
+			<em>가장 먼저 선점해야 시장의 중심이 될 수 있습니다.</em>
+		</p>
+		<div class="col_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/col_sl1.png" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/col_sl2.png" alt="" class="w100"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //collabo end -->
+	<!-- trend start -->
+	<div class="trend">
+		<p class="tre_title"><img src="<?=$root?>/img/main/tre_title.png" alt="가장 트렌디한 커피를 만나는 방법" class="w100"></p>
+		<p class="tre_text main_text fw_b t_center">
+			<em>이런 음료가 있었어?</em><br>
+			우연히 알게된 트렌디한 음료가 있다면<br>
+			망설이지 말고 감성커피로 향해 주세요.
+		</p>
+		<div class="tre_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/tre_sl1.png" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/tre_sl2.png" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/tre_sl3.png" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/tre_sl4.png" alt="" class="w100"></li>
+					<li class="swiper-slide"><img src="<?=$root?>/img/main/tre_sl5.png" alt="" class="w100"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //trend end -->
+	<!-- success start -->
+	<div class="success">
+		<div class="inner"><div class="suc_textbox t_center fw_b"><em>감성커피 성공 스토리</em></div></div>
+		<p class="suc_title"><img src="<?=$root?>/img/main/suc_title.png" alt="진한커피 찐한성공" class="w100"></p>
+		<p class="suc_content rel">
+			<img src="<?=$root?>/img/main/suc_content.png" alt="" class="w100">
+			<a href="<?=URL_PATH?>" data-idx="3" class="a1"><img src="<?=$root?>/img/main/suc_a1.png" alt="" class="h100"></a>
+			<a href="<?=URL_PATH?>" data-idx="7" class="a2"><img src="<?=$root?>/img/main/suc_a2.png" alt="" class="h100"></a>
+			<a href="<?=URL_PATH?>" data-idx="6" class="a3"><img src="<?=$root?>/img/main/suc_a3.png" alt="" class="h100"></a>
+			<a href="<?=URL_PATH?>" data-idx="5" class="a4"><img src="<?=$root?>/img/main/suc_a4.png" alt="" class="h100"></a>
+		</p>
+	</div>
+	<!-- //success end -->
+	<!-- slider start -->
+	<div class="slider">
+		<div class="slider_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide swiper-slide-active">
+						<div class="sl_img"><img src="<?=$root?>/img/main/slider_img1.jpg" alt="" class="w100"></div>
+						<p class="sl_title"><img src="<?=$root?>/img/main/slider_title1.png" alt="" class="w100"></p>
+						<p class="main_text">
+							10여가지 이상의 풍미로<br>
+							매일 다르게 즐기는 아메리카노<br>
+							오직 감성커피에서만 경험할 수 있습니다.
+						</p>
+					</li>
+					<li class="swiper-slide swiper-slide-active">
+						<div class="sl_img"><img src="<?=$root?>/img/main/slider_img2.jpg" alt="" class="w100"></div>
+						<p class="sl_title"><img src="<?=$root?>/img/main/slider_title2.png" alt="" class="w100"></p>
+						<p class="main_text">
+							고객이 브랜드를 보고 들어와<br>
+							커피를 마시고 나가는 일련의 모든 과정을<br>
+							세심하게 디자인합니다.
+						</p>
+					</li>
+					<li class="swiper-slide swiper-slide-active">
+						<div class="sl_img"><img src="<?=$root?>/img/main/slider_img3.jpg" alt="" class="w100"></div>
+						<p class="sl_title"><img src="<?=$root?>/img/main/slider_title3.png" alt="" class="w100"></p>
+						<p class="main_text">
+							오리지널커피, 9가지 원두<br>
+							새로움을 추구하는 고객 모두 즐길 수 있는,<br>
+							커피가 맛있는 카페입니다.
+						</p>
+					</li>
+					<li class="swiper-slide swiper-slide-active">
+						<div class="sl_img"><img src="<?=$root?>/img/main/slider_img4.jpg" alt="" class="w100"></div>
+						<p class="sl_title"><img src="<?=$root?>/img/main/slider_title4.png" alt="" class="w100"></p>
+						<p class="main_text">
+							감성을 중심으로 한 감성커피는 매장을 찾는<br>
+							고객님들이 공감하고<br>
+							위로받을 수 있는 공간을 만들고자 노력합니다.
+						</p>
+					</li>
+				</ul>
+			</div>
+			<ul class="slider_paging fs_def t_center">
+			    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+			    <li><a href="#none"></a></li>
+				<li><a href="#none"></a></li>
+				<li><a href="#none"></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //slider end -->
+<?if ($_REQUEST['type'] == 'view') {
+    $view_query = 'SELECT * FROM `'.TABLE_LEFT.'success_01` WHERE `view3_use`="1" AND `view3_idx`="'.(int)$_GET['idx'].'"; ';
+        $view_result = mysql_query($view_query);
+        if($view_result){
+            $view_data = mysql_fetch_assoc($view_result);
+            $next_command_01 = view3_html($view_data['view3_command_02']);
+            $view_img = array_filter(explode('||', $view_data['view3_file']));
+            $view_img = $view_img[3];
+            $bg_img = $pc.'/upload/success_01'.$view_img;
+            if($view_img =='' || !is_file(ROOT_INC.'/upload/success_01'.$view_img) ){
+                $bg_img = '';
+            }
+    ?>
+            <div class="clt_top_pop">
+                <div class="clt_top_vis rel">
+                    <div class="img_area bg" style="background-image:url('<?=$bg_img;?>')"></div>
+                    <div class="img_ovly bg abs"></div>
+                    <div class="text_area">
+                        <? if($view_data['view3_link']!=''){ ?>
+                        <div class="video_area">
+                            <? if($view_data['view3_video']=='YouTube'){ ?>
+                                <iframe type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/<?=$view_data['view3_link'];?>?autoplay=1&amp;playsinline=1&amp;rel=0" frameborder="0" ></iframe>
+                            <? } ?>
+                            <? if($view_data['view3_video']=='Vimeo'){ ?>
+                                <iframe type="text/html" width="100%" height="100%" src="https://player.vimeo.com/video/<?=$view_data['view3_link'];?>?autoplay=1&amp;byline=0&amp;portrait=0&amp;title=0" frameborder="0"></iframe>
+                            <? } ?>
+                        </div>
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="clt_top_text rel">
+                    <div class="clt_text_wrap">
+                        <p class="clt_txt_title"><?=view3_html($view_data['view3_title_02']);?></p>
+                        <div class="clt_txt_text text"><?=$next_command_01;?></div>
+                    </div>
+                </div>
+                <button type="button" class="clt_pop_close abs"><img src="<?=BOARD?>/view3_sns_00/img/modal_x.jpg" alt="닫기" class="w100"></button>
+            </div>
+<?
+    }
+}?>
+<?php
+include_once('inc/footer.php');
+include_once('inc/sitemap.php');
+?>
+</div>
+<!-- //wrap end -->
+<script>
+var CONST_REQUEST_ROOT = '<?=$pc?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$pc?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('m_type01', {
+			callback: popupCallback
+		});
+		new Popup('m_type02', {
+			callback: popupCallback
+		});
+
+		var $scElement = $('html, body');
+		var $wrapper = $('#wrap');
+		var scrollTop;
+		$('.success a').click(function(e){
+		    $.ajax({
+		        url : $(this).attr('href'),
+		        data : {
+		            idx : $(this).data('idx'),
+		            type : 'view'
+		        },
+		        success : function(result){
+		            // scrollTop = $(window).scrollTop();
+		            // $scElement.css({overflow: 'hidden', position: 'fixed', width: '100%', height: '100%'});
+		            // TweenLite.set($wrapper, {y: scrollTop * -1});
+		            $('.clt_top_pop', result).appendTo($('body'));
+		        }
+		    });
+		    e.preventDefault();
+		});
+
+		$('body').on('click','.clt_pop_close',function(){
+		    // $scElement.css({overflow: 'auto', position: 'static', width: 'auto', height: 'auto'}).scrollTop(scrollTop);
+		    // TweenLite.set($wrapper, {clearProps: 'zIndex, transform'});
+		    $(this).closest('.clt_top_pop').fadeOut(450,function(){
+		        $(this).remove();
+		    });
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

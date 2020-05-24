@@ -1,0 +1,129 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.new_title{padding-bottom:4.6875vw}
+.menu_list{padding-bottom:14.6875vw}
+.menu_list li{width:44.375vw;height:63.125vw;margin-right:1.5625vw;margin-bottom:1.5625vw;border:1px solid rgba(187,187,187,0.5);box-sizing:border-box}
+.menu_list li:nth-child(2n){margin-right:0px}
+.menu_list .img{position:relative;height:43.4375vw}
+.menu_list .img::after{content:"";position:absolute;left:50%;bottom:-1px;margin-left:-20.1562vw;width:40.3125vw;height:1px;background:rgba(0,0,0,0.3)}
+.menu_list .menu_name{padding:4.5vw 1.875vw 0;font-family:'NotoSansKR-Medium';font-size:3.75vw;letter-spacing:-0.03em;text-align:center;color:#222}
+.menu_list .menu_eng{padding:1.5625vw 1.875vw 0;font-size:3.4375vw;letter-spacing:-0.03em;line-height:140%;text-align:center;color:#666}
+
+.category{position:relative;margin:7.8125vw 0 4.6875vw}
+.category .cate_select{position:relative;height:7.1875vw;padding:0 7.8125vw 1.5625vw 4.6875vw;border-bottom:2px solid #222}
+.category .cate_select::before{content:"";position:absolute;top:3.125vw;right:1.875vw;width:3.125vw;height:1.5625vw;background:url('../img/page/menu/2/op_arr.png')no-repeat center;background-size:cover}
+.category .cate_list{position:absolute;top:calc(8.75vw + 4px);width:100%;z-index:2}
+.cate_list .list_ul{display:inline-block;padding:4.6875vw 4.6875vw;border:1px solid #222;background:rgba(255,255,255,0.85)}
+.cate_list .list_ul li{margin-bottom:1.5625vw}
+.cate_list .list_ul li:last-child{margin-bottom:0}
+.cate_list .list_ul li a{display:block;height:6.25vw;padding-bottom:0.9375vw}
+</style>
+<div class="titles_wrap">
+    <p class="box_title">감성커피 메뉴 소개</p>
+    <p class="page_title"><img src="<?=$root?>/img/page/menu/2/page_title.png" alt="트렌드가 떙긴다" class="w100"></p>
+    <span class="line"></span>
+</div>
+<div class="new_menu layer">
+    <div class="category">
+        <div class="t_center fs_def"><a href="#none" class="cate_select"><img src="<?=$root?>/img/page/menu/2/me2_op1.png" alt="" class="h100"></a></div>
+        <div class="cate_list t_center">
+            <ul class="list_ul t_left">
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op1.png" alt="" class="h100"></a></li>
+<?
+$tab_sql = "select * from ".TABLE_LEFT."menu_cate_01 where view3_use = 1 order by view3_write_day";
+$tab_res = mysql_query($tab_sql);
+$tab_num = mysql_num_rows($tab_res);
+$tab_arr = [];
+while ($tab_lst = mysql_fetch_assoc($tab_res)) {
+    $tab_img = explode("||",$tab_lst['view3_file']);
+    $tab_arr[] = $tab_lst['view3_idx'];
+?>
+                <li><a href="#none"><img src="<?=$request_root?>/upload/menu_cate_01<?=$tab_img[2]?>" alt="" class="h100"></a></li>
+<?
+}
+?>
+                <!-- <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op1.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op2.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op3.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op4.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op5.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op6.png" alt="" class="h100"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/2/me2_op7.png" alt="" class="h100"></a></li> -->
+                <!-- <li><a href="#none" style="background-image:url('<?=$root?>/img/page/menu/2/me2_op1.png')"></a></li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="inner clearfix tab_conts">
+        <div class="tab_cont01 tab_cont">
+            <ul id="allMenu" class="menu_list fs_def">
+<?
+$menu_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 order by view3_order desc, view3_write_day desc";
+$menu_res = mysql_query($menu_sql);
+while ($menu_lst = mysql_fetch_assoc($menu_res)) {
+    $menu_img = explode("||",$menu_lst['view3_file']);
+?>
+                <li>
+                    <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$menu_img[3]?>')">
+                    </div>
+                    <p class="menu_name ellipsis"><?=$menu_lst['view3_title_01']?></p>
+                    <p class="menu_eng ellipsis"><?=$menu_lst['view3_title_02']?></p>
+                </li>
+<?
+}
+?>
+            </ul>
+        </div>
+
+<?
+if ($tab_num > 0) {
+    for ($i=0; $i < count($tab_arr); $i++) {
+        $menu_cate_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_cate_idx = {$tab_arr[$i]}";
+        $menu_cate_res = mysql_query($menu_cate_sql);
+        ?>
+            <div class="tab_cont<?$i?> tab_cont" style="display:none">
+                <ul id="allMenu" class="menu_list fs_def">
+        <?
+        while ($menu_cate_lst = mysql_fetch_assoc($menu_cate_res)) {
+            $menu_cate_img = explode("||",$menu_cate_lst['view3_file']);
+        ?>
+                    <li>
+                        <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$menu_cate_img[3]?>')">
+                        </div>
+                        <p class="menu_name ellipsis"><?=$menu_cate_lst['view3_title_01']?></p>
+                        <p class="menu_eng ellipsis"><?=$menu_cate_lst['view3_title_02']?></p>
+                    </li>
+        <?
+        }
+        ?>
+                </ul>
+            </div>
+        <?
+    }
+}
+?>
+    </div>
+</div>
+
+<script>
+    (function($){
+        $('.cate_list').hide();
+        $('.cate_select').click(function() {
+            $('.cate_list').slideToggle();
+        });
+        $('.cate_list a').click(function(){
+            var img = $(this).find('img').attr('src');
+            $('.cate_select img').attr('src',img);
+            $('.cate_list').slideUp();
+        });
+
+        new Tabbing($('.cate_list ul'),$('.tab_conts'));
+    }(jQuery));
+
+
+</script>
+
+<?php
+include_once('../inc/bottom.php');
+?>

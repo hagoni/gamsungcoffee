@@ -1,0 +1,811 @@
+<?php
+include_once('../inc/top.php');
+?>
+
+<?
+$suc_sql = "select * from ".TABLE_LEFT."success_01 where view3_use = 1 order by view3_order desc, view3_write_day desc";
+$suc_res = mysql_query($suc_sql);
+$HTML_LI_IMG = "";
+$HTML_LI_CON = "";
+while ($suc_lst = mysql_fetch_assoc($suc_res)) {
+    $path_view = URL_PATH;
+    $img = explode('||',$suc_lst['view3_file']);
+    $title = view3_html($suc_lst['view3_title_01']);
+    $HTML_LI_IMG .= "<li class='swiper-slide'><a href='{$path_view}' data-idx='{$suc_lst['view3_idx']}' class='pv-opener story_link'><img src='{$root}/upload/success_01{$img[2]}' alt=''></a></li>";
+    $HTML_LI_CON .= "<li class='swiper-slide'>";
+    $HTML_LI_CON .= "<a href='{$path_view}' data-idx='{$suc_lst['view3_idx']}' class='pv-opener story_link'>";
+    $HTML_LI_CON .= "<p class='sl_txt'>{$suc_lst['view3_special_01']}</p>";
+    $HTML_LI_CON .= "<p class='sl_ttl'>{$title}</p>";
+    $HTML_LI_CON .= "<p class='pv-opener story_link'>{$suc_lst['view3_special_02']}<span class='arr'></span></p>";
+    $HTML_LI_CON .= "</a></li>";
+}
+?>
+        <!-- story start -->
+        <div class="story chapters over_h section_1">
+            <div class="section_in clearfix">
+                <div class="story_img_slide f_left">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                        <?=$HTML_LI_IMG?>
+                            <!-- <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img1.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img2.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img3.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img4.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img5.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/story_img6.jpg" alt=""></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="text_area f_right t_right" data-motion-offset="6">
+                    <p class="box_title">감성커피 성공스토리</p>
+                    <p class="img_title page_title">
+                        <img src="<?=$root?>/img/page/fran/story_ttl.png" alt="#진한커피 찐한성공">
+                        <span class="grad grad_l el5_0"></span>
+                    </p>
+                </div>
+                <div class="story_text_slide abs">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <?=$HTML_LI_CON?>
+                            <!-- <li class="swiper-slide">
+                                <p class="sl_txt">다점포 점주</p>
+                                <p class="sl_ttl">11개월만에<br><em>2호점을 개설하다</em></p>
+                                <a href="#none" class="pv-opener story_link">전주 객사점 점주 사례<span class="arr"></span></a>
+                            </li>
+                            <li class="swiper-slide">
+                                <p class="sl_txt">브랜드 변경 창업</p>
+                                <p class="sl_ttl">카페 브랜드 변경<br><em>감성커피로 성공</em></p>
+                                <a href="#none" class="pv-opener story_link">광주 경안점 성공사례<span class="arr"></span></a>
+                            </li>
+                            <li class="swiper-slide">
+                                <p class="sl_txt">주부창업&middot;초보창업</p>
+                                <p class="sl_ttl">커피를 몰랐던<br><em>주부도 창업하다</em></p>
+                                <a href="#none" class="pv-opener story_link">대전 탄방점 성공사례<span class="arr"></span></a>
+                            </li>
+                            <li class="swiper-slide">
+                                <p class="sl_txt">확실한 선택</p>
+                                <p class="sl_ttl">테이크 아웃 전문카페<br><em>선택과 집중으로 성공</em></p>
+                                <a href="#none" class="pv-opener story_link">대전 을지점 성공사례<span class="arr"></span></a>
+                            </li>
+                            <li class="swiper-slide">
+                                <p class="sl_txt">부부창업&middot;은퇴창업</p>
+                                <p class="sl_ttl">치킨집 사장님에서<br><em>바리스타로 변신</em></p>
+                                <a href="#none" class="pv-opener story_link">부산 사직점 성공사례<span class="arr"></span></a>
+                            </li>
+                            <li class="swiper-slide">
+                                <p class="sl_txt">다점포창업&middot;가족창업</p>
+                                <p class="sl_ttl">가족과 함께 2호점<br><em>감성커피로 확장</em></p>
+                                <a href="#none" class="pv-opener story_link">천안 법원점 성공사례<span class="arr"></span></a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <button class="story_btns story_prev">이전</button>
+                <button class="story_btns story_next">다음</button>
+            </div>
+        </div>
+        <!-- //story end -->
+        <!-- trend start -->
+        <div class="trend rel chapters section_2">
+            <div class="inner h100">
+                <div class="section_in">
+                    <p class="box_title">이런 커피가 있었어?</p>
+                    <p class="img_title">무시무시한 감성커피의 메뉴들 트렌드가 땡긴다</p>
+                </div>
+                <div class="drink_slide abs">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img1.png" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img2.png" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img3.png" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img4.png" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img5.png" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/trend_img6.png" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="drink_paging abs w100 h100">
+                    <li class="jellypaw l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_jellypaw.png" alt=""></a></li>
+                    <li class="oreo l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_oreo.png" alt=""></a></li>
+                    <li class="jellyshark l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_jellyshark.png" alt=""></a></li>
+                    <li class="waffle l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_waffle.png" alt=""></a></li>
+                    <li class="strawberry l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_stw.png" alt=""></a></li>
+                    <li class="marshmellow l50"><a href="#none"><img src="<?=$root?>/img/page/fran/trend_msh.png" alt=""></a></li>
+                </ul>
+                <div class="text_area l50">
+                    <p class="stext">혹시나 했는데 역시나.<br><em>언제나처럼 감성커피에는 존재했다.</em></p>
+                    <p class="text">우연히 알게된 트렌디한 커피가 있다면<br>망설이지 말고 감성커피로 향해 주세요.<br>엉뚱발랄하지만 실력만큼은 알아주는<br>5인 특급 바리스타가 있으니까요.</p>
+                    <a href="<?=$root?>/html/brand_2.html" class="link">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+        <!-- //trend end -->
+        <!-- americano end -->
+        <div class="americano rel chapters section_3">
+            <div class="inner">
+                <p class="img_title t_center"><img src="<?=$root?>/img/page/fran/am_ttl.png" alt="다양한 풍미의 인생 아메리카노"></p>
+                <p class="text t_center">우수한 품질의 다양한 원두, 10여가지 이상의 풍미로 매일 다르게 즐기는 아메리카노.<br><em>오직 감성커피에서만 경험할 수 있습니다.</em></p>
+                <div class="clearfix" data-motion-offset="1">
+                    <div class="bg_texts f_left rel">
+                        <ul>
+                            <li class="active">
+                                <img src="<?=$root?>/img/page/fran/am_text1.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text1_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text2.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text2_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text3.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text3_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text4.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text4_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text5.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text5_on.png" alt=""></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg_texts f_right rel t_right">
+                        <ul>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text6.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text6_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text7.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text7_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text8.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text8_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text9.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text9_on.png" alt=""></span>
+                            </li>
+                            <li>
+                                <img src="<?=$root?>/img/page/fran/am_text10.png" alt="">
+                                <span><img src="<?=$root?>/img/page/fran/am_text10_on.png" alt=""></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="coffee_img l50"><img src="<?=$root?>/img/page/fran/am_img.png" alt=""></div>
+        </div>
+        <!-- //americano end -->
+        <!-- gamsung start -->
+        <div class="gamsung over_h chapters section_4" data-motion-offset="2">
+            <div class="inner">
+                <div class="text_area rel t_right">
+                    <p class="box_title">전 세대의 마음을 움직이는</p>
+                    <p class="img_title"><img src="<?=$root?>/img/page/fran/gs_ttl.png" alt="감성잡화점"></p>
+                    <ul class="gs_ul cmn_ul">
+                        <li>세련된 레트로 브랜드<br><em>고객의 마음을 사로잡다</em></li>
+                        <li>디자인 실용성<br><em>두 가지를 탁월하게 사로잡다</em></li>
+                        <li>당신을 성공으로 이끄는<br><em>단 하나의 브랜드</em></li>
+                    </ul>
+                    <a href="<?=$root?>/html/brand_3.html" class="link">자세히 보기</a>
+                </div>
+                <div class="gs_slide abs">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/gs_img1.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/gs_img2.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/gs_img3.jpg" alt=""></li>
+                            <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/gs_img4.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                    <ul class="gs_paging abs fs_def">
+                        <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                        <li><a href="#none"></a></li>
+                        <li><a href="#none"></a></li>
+                    </ul>
+                </div>
+                <div class="numbers_area l50">
+                    <div class="numbers fs_def">
+                        <?
+                        $avgSplit = str_split(number_format($settings_data['info_count_milkcaramel']));
+                        foreach($avgSplit as $k => $num){
+                            if($num === ','){
+                                continue;
+                            }else{
+                                $addClass = ($avgSplit[$k+1]===','?' num2':'');
+                                echo '<span class="num'.$addClass.'" data-number="'.$num.'">0</span>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <p class="img_text t_center"><img src="<?=$root?>/img/page/fran/gs_txt.png" alt=""></p>
+                </div>
+            </div>
+        </div>
+        <!-- //gamsung end -->
+        <!-- hersheys start -->
+        <div class="collabo" data-motion-offset="3">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <div class="hersheys">
+                            <div class="inner h100">
+                                <p class="img_title rel"><img src="<?=$root?>/img/page/fran/collabo_ttl_hershey.png" alt="감성커피 x HERSHEY'S"></p>
+                                <div class="img l50"><img src="<?=$root?>/img/page/fran/collabo_img_hershey.png" alt=""></div>
+                                <div class="text_area ta1 l50">
+                                    <p class="text">Real Hershy’s Chocolate Latte</p>
+                                    <p class="stext">리얼 허쉬초코라떼</p>
+                                </div>
+                                <div class="text_area ta2 l50">
+                                    <p class="img_text"><img src="<?=$root?>/img/page/fran/collabo_txt_hershey.png" alt="대형 브랜드와의 콜라보 메뉴 개발"></p>
+                                    <p class="text">세계 최고 초콜릿 전문기업<br><em>HERSEY’S 와 콜라보는 감성커피가 유일합니다.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="malangcow">
+                            <div class="inner h100">
+                                <p class="img_title rel"><img src="<?=$root?>/img/page/fran/collabo_ttl_malangcow.png" alt="감성커피 x 말랑카우"></p>
+                                <div class="img l50"><img src="<?=$root?>/img/page/fran/collabo_img_malangcow.png" alt=""></div>
+                                <div class="text_area ta1 l50">
+                                    <p class="text">Malang Shake Milk</p>
+                                    <p class="stext">말랑 쉐이크 밀크</p>
+                                </div>
+                                <div class="text_area ta2 l50">
+                                    <p class="img_text"><img src="<?=$root?>/img/page/fran/collabo_txt_malangcow.png" alt="대형 브랜드와의 콜라보 메뉴 개발"></p>
+                                    <p class="text">푹신푹신한 말랑카우! <br><em>말랑카우와 콜라보는 감성커피가 유일합니다.</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //hersheys end -->
+        <!-- ratio start -->
+        <div class="ratio over_h layer" data-motion-offset="4">
+            <div class="page_title_area">
+                <div class="titles_wrap rel">
+                    <p class="page_title t_right fs_def">
+                        <img src="<?=$root?>/img/page/fran/ratio_ttl.jpg" alt="">
+                        <span class="grad grad_r el3_0"></span>
+                        <span class="line line_r"><span class="el3_1"></span></span>
+                    </p>
+                    <p class="text inner">다점포 매장 운영은 가맹점의 높은 브랜드 만족도가 선행되야 합니다.<br><em>체계적인 운영 시스템과 높은 만족도로 이미 많은 가맹점에서 다점포를 운영하고 있습니다</em></p>
+                    <div class="ratio_numbers numbers_wrap abs fs_def">
+                        <?
+                        $avgSplit = str_split(number_format($settings_data['info_count_multistore']));
+                        foreach($avgSplit as $num){
+                            if($num === ','){
+                                echo '<span class="comma">,</span>';
+                            }else{
+                                echo '<span class="num" data-number="'.$num.'">0</span>';
+                            }
+                        }
+                        ?>
+                        <span class="per"><img src="<?=$root?>/img/page/fran/ratio_per.png" alt=""></span>
+                    </div>
+                </div>
+            </div>
+            <div class="inner">
+                <ul class="ratio_ul fs_def">
+                    <li>
+                        <p class="img t_center"><img src="<?=$root?>/img/page/fran/ratio_img1.png" alt=""></p>
+                        <p class="li_txt">신뢰할 수 있는 본사와<br><em>가맹점의 높은</em><br><em>브랜드 만족도</em></p>
+                    </li>
+                    <li>
+                        <p class="img t_center"><img src="<?=$root?>/img/page/fran/ratio_img2.png" alt=""></p>
+                        <p class="li_txt">유사 브랜드 비교시<br><em>10% 이상 저렴한</em><br><em>합리적인 창업 비용</em></p>
+                    </li>
+                    <li>
+                        <p class="img t_center"><img src="<?=$root?>/img/page/fran/ratio_img3.png" alt=""></p>
+                        <p class="li_txt">빠른 투자금<br><em>회수가 가능한</em><br><em>안전한 브랜드 창업</em></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //ratio end -->
+        <!-- signature start -->
+        <div class="signature over_h layer" data-motion-offset="5">
+            <div class="page_title_area">
+                <div class="titles_wrap rel">
+                    <p class="page_title t_right fs_def">
+                        <img src="<?=$root?>/img/page/fran/sig_ttl.jpg" alt="">
+                        <span class="grad grad_r el4_0"></span>
+                        <span class="line line_r"><span class="el4_1"></span></span>
+                    </p>
+                    <div class="sig_numbers1 numbers_wrap abs fs_def">
+                        <?
+                        $avgSplit = str_split(number_format($settings_data['info_count_signature_avg']));
+                        foreach($avgSplit as $num){
+                            if($num === ','){
+                                echo '<span class="comma">,</span>';
+                            }else{
+                                echo '<span class="num" data-number="'.$num.'">0</span>';
+                            }
+                        }
+                        ?>
+                        <span class="per"><img src="<?=$root?>/img/page/fran/ratio_per.png" alt=""></span>
+                    </div>
+                </div>
+            </div>
+            <div class="inner clearfix">
+                <div class="text_area ta1 f_left">
+                    <div class="sig_numbers2 sm_numbers fs_def">
+                        <?
+                        $avgSplit = str_split(number_format($settings_data['info_count_signature']));
+                        foreach($avgSplit as $num){
+                            if($num === ','){
+                                echo '<span class="comma">,</span>';
+                            }else{
+                                echo '<span class="num" data-number="'.$num.'">0</span>';
+                            }
+                        }
+                        ?>
+                        <span class="unit">잔</span>
+                    </div>
+                    <p class="img_text"><img src="<?=$root?>/img/page/fran/sig_txt.png" alt="시그니처 메뉴 한달 판매 수"></p>
+                </div>
+                <div class="text_area ta2 f_left">
+                    <p class="stext">시그니처 메뉴로<br><em>높은 만족도를 창출합니다.</em></p>
+                    <p class="text">브랜드 경쟁력을 창출하는 시그니처 메뉴가 잘 팔려야<br>높은 매출 창출과 안정적인 매장 운영이 가능합니다.</p>
+                </div>
+            </div>
+        </div>
+        <!-- //signature end -->
+        <!-- decoration start -->
+        <div class="decoration t_center" data-motion-offset="7">
+            <div class="deco_bg bg h100 el6_1"></div>
+            <div class="text_area">
+                <p class="img_title"><img src="<?=$root?>/img/page/fran/dec_bnr_ttl.png" alt="특화된 맛은 물론 예쁘게 장식된 마지막 데코레이션까지"></p>
+                <p class="text">시그니처 메뉴에 대한 분명한 정체성으로 높은 만족도를 창출합니다.</p>
+            </div>
+        </div>
+        <!-- //decoration end -->
+        <!-- safe start -->
+        <div class="safe chapters section_5">
+            <div class="inner">
+                <p class="img_title rel"><img src="<?=$root?>/img/page/fran/safe_ttl.png" alt="‘상생’을 기반으로한 안전한 브랜드"></p>
+                <ul class="safe_tab cmn_ul">
+                    <li class="on"><p>지속적인 마케팅으로<br><em>브랜드의 가치를 높여내다</em></p></li>
+                    <li><p>10%이상 저렴한<br><em>창업비용</em></p></li>
+                    <li><p>탄탄한 물류 인프라 시스템으로<br><em>높은 마진율 창출</em></p></li>
+                </ul>
+                <div class="safe_tabconts abs">
+                    <div class="tab_cont1">
+                        <div class="safe_slide safe_slide1 rel">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_1.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_2.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_3.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_4.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_5.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_6.jpg" alt="">
+                                    </li>
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img1_7.jpg" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="text abs w100"><em>본사는 브랜드 가치 창출을 위해  끊임없이 노력해야 합니다.</em></p>
+                            <ul class="slide_paging sf_slide1_pg abs fs_def">
+                                <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                            </ul>
+                        </div>
+                        <p class="text comments">- 지속적인 브랜드 홍보 마케팅.<br>- 신규 가맹점 시장 진입을 위한 전략 도출.</p>
+                    </div>
+                    <div class="tab_cont2" style="display:none">
+                        <div class="safe_slide safe_slide2 rel">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img2.jpg" alt="">
+                                        <p class="text abs w100"><em>본사 자체 인테리어 시공팀을 운영합니다.</em></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="slide_paging sf_slide2_pg abs fs_def">
+                                <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                            </ul>
+                        </div>
+                        <p class="text comments">본사 자체적으로 인테리어 시공팀을 운영하고 있어<br>타 브랜드 대비 10% 이상  저렴한 비용으로 매장 개설이 가능합니다.</p>
+                    </div>
+                    <div class="tab_cont3" style="display:none">
+                        <div class="safe_slide safe_slide3 rel">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <img src="<?=$root?>/img/page/fran/safe_img3.jpg" alt="">
+                                        <p class="text abs w100"><em>탄탄한 물류 인프라를 보유하고 있습니다.</em></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="slide_paging sf_slide3_pg abs fs_def">
+                                <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                                <li><a href="#none"></a></li>
+                            </ul>
+                        </div>
+                        <p class="text comments">본사의 탄탄한 물류 인프라 시스템으로 <br>높은 마진율을 창출합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //safe end -->
+        <!-- popular start -->
+        <div class="popular">
+            <div class="inner">
+                <p class="img_title"><img src="<?=$root?>/img/page/fran/popular_ttl.png" alt="유행의 시작은 언제나 감성커피"></p>
+                <button type="button" class="pp_btns pp_prev">이전</button>
+                <button type="button" class="pp_btns pp_next">다음</button>
+                <div class="popular_slide">
+                    <div class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <img src="<?=$root?>/img/page/fran/popular_img1.jpg" alt="">
+                                <p class="stext">누구나 공감하는 감성적인<br><em>네온문구</em></p>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="<?=$root?>/img/page/fran/popular_img2.jpg" alt="">
+                                <p class="stext">톡톡튀는 감성커피만의<br><em>음료들</em></p>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="<?=$root?>/img/page/fran/popular_img3.jpg" alt="">
+                                <p class="stext">감성커피에서 시작된<br><em>트렌디한 감성문구들</em></p>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="<?=$root?>/img/page/fran/popular_img4.jpg" alt="">
+                                <p class="stext">이것이 바로 세계최초<br><em>독특한 디자인 캐리어</em></p>
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="<?=$root?>/img/page/fran/popular_img5.jpg" alt="">
+                                <p class="stext">인건비 부담없이 혼자서<br><em>1인 창업시대</em></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //popular end -->
+        <!-- franchise start -->
+        <div class="fran chapters section_6">
+            <p class="img_title t_center"><img src="<?=$root?>/img/page/fran/fran_ttl.png" alt=""></p>
+            <p class="text t_center">가맹본부만 배불리는 부풀려진 창업비용, 감성커피에는 없습니다.</p>
+            <ul class="tabmenu inq_tabmenu fs_def t_center">
+                <li class="on"><a href="#none"></a></li>
+                <li><a href="#none"></a></li>
+            </ul>
+            <div class="fran_tabconts inner">
+                <div class="tab_cont1">
+                    <div class="clearfix">
+                        <p class="units f_left">8평 기준 (26.4㎡)</p>
+                        <p class="units f_right">단위 : 만원/부가세별도</p>
+                    </div>
+                    <div class="table_wrap">
+                        <table class="table">
+                            <caption class="indent">창업비용 표</caption>
+                            <colgroup>
+                                <col class="col1">
+                                <col class="col2">
+                                <col class="col3">
+                                <col class="col4">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">구&nbsp;&nbsp;분</th>
+                                    <th scope="col">내&nbsp;&nbsp;용</th>
+                                    <th scope="col">금액</th>
+                                    <th scope="col">비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">가맹비</th>
+                                    <td class="cl_light">상표 사용권 부여, 상권조사 및 영업권 보장</td>
+                                    <td>3,000,000</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">교육비</th>
+                                    <td class="cl_light">매뉴얼 교육 및 점포 운영에 관한 교육 &middot; 현장 실습비</td>
+                                    <td>2,000,000</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">주방기기 / 기물</th>
+                                    <td class="cl_light">고급 커피머신, 자동 그라인더, 대용량 제빙기, 믹서기, 디지털 냉장고,<br>테이블 냉동고, 핫워터, 온수기,수동그라인더, 작업대, 컵디스펜서, 선반,<br>넉박스, 주방집기 포함 </td>
+                                    <td>19,800,000</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" rowspan="2">인테리어</th>
+                                    <td class="cl_light">목공사, 전기, 조명공사, 도장, 타일, 유리, 금속, 설비 공사 외</td>
+                                    <td>11,500,000</td>
+                                    <td>추가 평당 125만원</td>
+                                </tr>
+                                <tr>
+                                    <td class="cl_light">설계 및 도면디자인</td>
+                                    <td>2,000,000</td>
+                                    <td>추가 평당 25만원</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">가구</th>
+                                    <td class="cl_light">테이블 및 의자, 붙박이 쇼파</td>
+                                    <td></td>
+                                    <td>별도</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">홍보물&middot;비품</th>
+                                    <td class="cl_light">유니폼, 홍보물, 배너, 전단, 쿠폰, 명함 외</td>
+                                    <td>1,600,000</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">포스장비 / 음향설비</th>
+                                    <td class="cl_light"><em>400만원 상당</em><br>듀얼모니터 포스시스템, 카드체크기, 프린터, 관리프로그램,<br>매장 음향장비일체(엠프,스피커포함)</td>
+                                    <td></td>
+                                    <td class="big_txt">무상지원</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row">TOTAL</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="t_center">39,900,000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <p class="comments">·  별도사항 : 전기증설, 냉난방, 철거, 외관공사, 테라스, 어닝, 디스플레이, 이행보증금, 간판, 소방, 폴딩도어 등<br>&nbsp;&nbsp;&nbsp;&nbsp;위 사항은 예측된 수치로서 세부사항은 변동될 수 있습니다. (모등 비용은 VAT별도 금액입니다.)<br>&nbsp;&nbsp;&nbsp;&nbsp;위 조건은 점포상황(전기증설, 급/배수, 어닝, 테라스, 공사 등)에 따라 견적이 상이할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="tab_cont2 steps" style="display:none">
+                    <ul class="step_ul fs_def">
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num1.png" alt="1"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">가맹 개설상담</p>
+                                <p class="li_text">
+                                    전화, 방문, 사업설명회를<br>
+                                    통한 창업상담
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num2.png" alt="2"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">점포선정 및 상권분석</p>
+                                <p class="li_text">
+                                    희망지역 상권분석을 통한<br>
+                                    사업타당성 검토
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num3.png" alt="3"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">당사 계약체결</p>
+                                <p class="li_text">
+                                    본사 검토후  가맹점 개설 결정,<br>
+                                    정보공개서 및 가맹계약서 제공
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num4.png" alt="4"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">점포실측 및 도면설계</p>
+                                <p class="li_text">
+                                    실측 후 매장 인테리어 도면 작성,<br>
+                                    점주님과 디자인, 공사일정협의
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num5.png" alt="5"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">인테리어 시설공사</p>
+                                <p class="li_text">
+                                    매장 규모에 따라 공사기간<br>
+                                    약 3주 내외 소요
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num6.png" alt="6"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">가맹점주 본사교육</p>
+                                <p class="li_text">
+                                    메뉴제조, 서비스, 세무, 마케팅,<br>
+                                    인력관리 등 매장운영에 관한<br>
+                                    전반적이론과 실습 교육
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num7.png" alt="7"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">개점준비 및 매장 가오픈</p>
+                                <p class="li_text">
+                                    오픈바이저와 운영 시뮬레이션을 통해<br>
+                                    매장오픈준비 최종점검
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num8.png" alt="8"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">정식 오픈</p>
+                                <p class="li_text">
+                                    오픈 프로모션 진행하며<br>
+                                    그랜드오픈
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ico_area">
+                                <p class="step_num"><img src="<?=$root?>/img/page/fran/step_num9.png" alt="9"></p>
+                            </div>
+                            <div class="text_area">
+                                <p class="li_ttl">매장관리</p>
+                                <p class="li_text">
+                                    담당 슈퍼바이저의<br>
+                                    지속적인 매장점검및 운영관리
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- //franchise end -->
+        <!-- inquiry start -->
+        <div class="inq chapters section_7" id="inquiry">
+            <p class="img_title t_center"><img src="<?=$root?>/img/page/fran/inq_ttl.png" alt="가맹문의"></p>
+            <p class="text t_center">가맹본부만 배불리는 부풀려진 창업비용, 감성커피에는 없습니다.</p>
+<?
+$path_action = view3_link("||idx||page||select||search||skin","action&skin=root","",$end_path);//등록 클릭시 링크
+$view3_type = 'list';
+$board = 'inquiry_01';
+$view3_sca = '1n1_01';
+$view3_skin = 'view3_inquiry_00';
+$h2_title_sub = '가맹상담';
+$no_include = true;
+include(BOARD_INC.'/index.php');
+?>
+        </div>
+    <?if ($_GET['type'] == 'view') {
+        $sql = "select * from ".TABLE_LEFT."success_01 where view3_use = 1 and view3_idx = {$_REQUEST['idx']}";
+        $res = mysql_query($sql);
+        $num = mysql_num_rows($res);
+        $lst = mysql_fetch_assoc($res);
+        $img = explode("||",$lst['view3_file']);
+
+        if ($num > 0) {
+        ?>
+        <div class="pv-container-parent">
+            <div class="pv-container">
+                <div class="pv-async-loader media_pop_inner clearfix h100">
+                    <!-- <div class="img_area f_left h100" style="background-image:url('../img/page/fran/pop_img.jpg')"></div> -->
+                    <? if($lst['view3_link']!=''){ ?>
+                        <div class="img_area f_left h100">
+                            <!-- <p class="artb_sb"><?=view3_html($lst['view3_title_01']);?></p> -->
+                            <div class="video_area">
+                                <? if($lst['view3_video']=='YouTube'){ ?>
+                                    <iframe type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/<?=$lst['view3_link'];?>?autoplay=1&amp;playsinline=1&amp;rel=0" frameborder="0" ></iframe>
+                                <? } ?>
+                                <? if($lst['view3_video']=='Vimeo'){ ?>
+                                    <iframe src="https://player.vimeo.com/video/<?=$lst['view3_link'];?>?autoplay=1&amp;muted=1&amp;loop=1" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <!-- <iframe type="text/html" width="100%" height="100%" src="https://player.vimeo.com/video/<?=$lst['view3_link'];?>?autoplay=1&amp;muted=1&amp;loop=1" width="100%" height="400" frameborder="0"></iframe> -->
+                                <? } ?>
+                            </div>
+                        </div>
+                    <? } else {?>
+                        <div class="img_area f_left h100" style="background-image:url('<?=$root?>/upload/success_01<?=$img[3]?>')"></div>
+                    <?}?>
+                    <div class="text_area rel f_left h100">
+                        <div class="ttl_wrap">
+                            <p class="box_title"><?=$lst['view3_special_02']?></p>
+                            <p class="title"><?=view3_html($lst['view3_title_02'])?></p>
+
+                        </div>
+                        <div class="text_wrap"><?=view3_html($lst['view3_command_02'])?></div>
+                        <!-- <p class="text_wrap">
+                            ‘감성커피’ 대전탄방점(대전 서구 문정로 96) 윤진경 가맹점주는 당차게 주부 창업자로써 카페 프랜차이즈 창업시장에 도전쟁을 냈고, 현재까지 만족할만한 성과를 기록중이다.<br><br>
+
+                            이에 본지는 윤진경 가맹점주가 주부 창업자로서 ‘감성커피’ 브랜드를 통해 성공 사례를 작성해 나가고 있는 배경과 여러 가지 의견을 청취하기 위해 매장을 직접 방문해 생생한 목소리를 전달한다.<br><br>
+
+                            “방과후 교사를 하던 중 카페 창업에 도전해보고 싶었어요. 인터넷 검색을 통해 카페 브랜드를 알아보던 중에 뭔가 독특하고 다른 프랜차이즈보다 특색 있다고 느낀 브랜드가 ‘감성커피’였습니다. 그래서 ‘저런 카페가 대전에 있으면 좋겠다’는 생각을 갖다가 본격적으로 창업에 길에 들어서게 됐죠”<br><br>
+
+                             윤진경 가맹점주는 그의 첫 인상처럼 신중하게 카페 창업을 준비했다. 타 업종에서 오랜 기간 일하며 분야 경험이 전무하기에 더욱 꼼꼼하게 살펴볼 수 밖에 없었고, 그런 그의 눈에 ‘감성커피’가 들어오게 된 것이다. 여러 가지 조건과 브랜드 경쟁력을 통해 지역에 이런 브랜드 하나쯤은 필요하겠다 마음 먹고 직접 매장 오픈을 실행에 옮기게 된 것이다. 그렇게 3년이란 시간이 지났고 오픈초기부터 별다른 고민 없이 매장을 안정적으로 운영해 나가고 있다. “3년째 매장을 안정적으로 운영해 나가고 있는데, 특별한 고민은 없었어요. 물론 그 과정에서 노력도 많이 했죠. 다행히 안정화된 시스템 덕에 혼자서도 매장을 잘 운영하고 있어요. 매장 오시는 고객분들이 항상 저를 기억해 주시더라구요. 고마운 고객들께 친절함은 당연하고, ‘여기 커피 맛있다, 여기 사장님 잘한다’ 소리를 듣도록 열심히 만들고 있습니다. <br><br>
+
+                             ‘감성커피’ 대전탄방점(대전 서구 문정로 96) 윤진경 가맹점주는 당차게 주부 창업자로써 카페 프랜차이즈 창업시장에 도전쟁을 냈고, 현재까지 만족할만한 성과를 기록중이다.<br><br>
+
+                             이에 본지는 윤진경 가맹점주가 주부 창업자로서 ‘감성커피’ 브랜드를 통해 성공 사례를 작성해 나가고 있는 배경과 여러 가지 의견을 청취하기 위해 매장을 직접 방문해 생생한 목소리를 전달한다.<br><br>
+
+                             “방과후 교사를 하던 중 카페 창업에 도전해보고 싶었어요. 인터넷 검색을 통해 카페 브랜드를 알아보던 중에 뭔가 독특하고 다른 프랜차이즈보다 특색 있다고 느낀 브랜드가 ‘감성커피’였습니다. 그래서 ‘저런 카페가 대전에 있으면 좋겠다’는 생각을 갖다가 본격적으로 창업에 길에 들어서게 됐죠”<br><br>
+
+                              윤진경 가맹점주는 그의 첫 인상처럼 신중하게 카페 창업을 준비했다. 타 업종에서 오랜 기간 일하며 분야 경험이 전무하기에 더욱 꼼꼼하게 살펴볼 수 밖에 없었고, 그런 그의 눈에 ‘감성커피’가 들어오게 된 것이다. 여러 가지 조건과 브랜드 경쟁력을 통해 지역에 이런 브랜드 하나쯤은 필요하겠다 마음 먹고 직접 매장 오픈을 실행에 옮기게 된 것이다. 그렇게 3년이란 시간이 지났고 오픈초기부터 별다른 고민 없이 매장을 안정적으로 운영해 나가고 있다. “3년째 매장을 안정적으로 운영해 나가고 있는데, 특별한 고민은 없었어요. 물론 그 과정에서 노력도 많이 했죠. 다행히 안정화된 시스템 덕에 혼자서도 매장을 잘 운영하고 있어요. 매장 오시는 고객분들이 항상 저를 기억해 주시더라구요. 고마운 고객들께 친절함은 당연하고, ‘여기 커피 맛있다, 여기 사장님 잘한다’ 소리를 듣도록 열심히 만들고 있습니다.
+                        </p> -->
+                        <button type="button" class="pv-closer"><img src="<?=BOARD?>/view3_sns_00/img/modal_x.jpg" alt="닫기"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?
+        }
+    }?>
+<?php
+include_once('../inc/bottom.php');
+?>
+
+<script>
+var $scElement = $('html, body');
+var $wrapper = $('#wrap');
+var scrollTop;
+$('body').on('click','.story_link',function(e){
+    $.ajax({
+        url : $(this).attr('href'),
+        data:{
+            idx : $(this).data('idx'),
+            type : 'view',
+        },
+        success : function(result){
+            scrollTop = $(window).scrollTop();
+            $scElement.css({overflow: 'hidden', position: 'fixed', width: '100%', height: '100%'});
+            TweenLite.set($wrapper, {y: scrollTop * -1});
+            $('.pv-container-parent', result).appendTo($('body'));
+        }
+    });
+    e.preventDefault();
+});
+
+$('body').on('click','.pv-closer',function(){
+    $scElement.css({overflow: 'auto', position: 'static', width: 'auto', height: 'auto'}).scrollTop(scrollTop);
+    TweenLite.set($wrapper, {clearProps: 'zIndex, transform'});
+    $(this).closest('.pv-container-parent').fadeOut(450,function(){
+        $(this).remove();
+    });
+});
+
+</script>
+<!-- //inquiry end -->
+
+<script src="<?=$root?>/js/YMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/fran.js?<?=$time?>"></script>

@@ -1,0 +1,8 @@
+/* .board_list > li{max-height:200px}
+.board_list_thumb{overflow:hidden;position:relative;width:44%;max-height:200px}
+.board_list_text{width:54%}
+.board_list_text > p{margin-right:0} */
+
+.tabmenu li:first-child a{background-image:url('../img/event_tab1.png')}
+.tabmenu li:nth-child(2) a{background-image:url('../img/event_tab2.png')}
+.tabmenu li:nth-child(3) a{background-image:url('../img/event_tab3.png')}

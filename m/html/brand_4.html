@@ -1,0 +1,96 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.layer1{padding-bottom:14.6875vw}
+.layer1 .lyr1_title{padding:6.25vw 0 9.375vw}
+.lyr1_slide ul li{height:54.6875vw}
+.layer1 .lyr1_paging{padding:7.8125vw 0 2.5vw}
+.layer1 .lyr1_fs30{padding:5.3125vw 0 2.5vw;font-family:'NotoSansKR-Light';font-size:4.6875vw;line-height:140%;text-align:center}
+.layer1 .lyr1_fs24{color:#484848;text-align:center}
+
+.layer2{height:78.125vw;background-image:url('../img/page/brand/4/lyr2_bg.jpg')}
+.layer2 .sub_text{padding-top:46.875vw;color:#fff}
+
+.int_title{padding:15.625vw 0 7.8125vw}
+.int .tabmenu{padding-bottom:7.8125vw}
+.int .tabmenu a{display:block;font-size:0;width:37.5vw;height:12.5vw;background-position:0 0;background-size:100%}
+.int .tabmenu li:nth-child(1) a{background-image:url('../img/page/brand/4/int_tab1.png')}
+.int .tabmenu li:nth-child(2) a{background-image:url('../img/page/brand/4/int_tab2.png')}
+.int .tabmenu li.on a{background-position:0 -12.5vw}
+.int .interior_slider{width:82.8125vw;height:53.125vw;margin:0 auto}
+.int .interior_slider .swiper-container{overflow:visible}
+.int .interior_slider li{margin-right:5vw}
+.int_paging{padding:7.8125vw 0 15.625vw}
+</style>
+<div class="titles_wrap">
+    <p class="box_title">감성 인테리어</p>
+    <p class="page_title"><img src="<?=$root?>/img/page/brand/4/page_title.png" alt="따뜻한 감성에 기대어 웃다" class="w100"></p>
+    <span class="line"></span>
+</div>
+<div class="layer1">
+    <p class="lyr1_title"><img src="<?=$root?>/img/page/brand/4/lyr1_title.png" alt="" class="w100"></p>
+    <div class="lyr1_slide inner">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/lyr1_sl1.jpg" alt="" class="w100"></li>
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/lyr1_sl2.jpg" alt="" class="w100"></li>
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/lyr1_sl3.jpg" alt="" class="w100"></li>
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/lyr1_sl4.jpg" alt="" class="w100"></li>
+            </ul>
+        </div>
+    </div>
+    <ul class="lyr1_paging tab_paging fs_def t_center">
+        <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+    </ul>
+    <p class="lyr1_fs30 sub_text fw_b">
+        누구나 공감하는<br>
+        <em>감성적인 한글 네온사인</em>
+    </p>
+    <p class="lyr1_fs24 sub_text">
+        ‘넌 지금 커피가 땡긴다’ 같이 트렌디한 한글 네온 사인은<br>
+        감성커피로부터 시작되었습니다.
+    </p>
+    <p class="lyr1_fs30 sub_text fw_b">
+        감성을 자극하는<br>
+        <em>레트로한 소품 인테리어</em>
+    </p>
+    <p class="lyr1_fs24 sub_text">
+        매장 내에 감성을 자극하는 레트로한 소품을 비치하여<br>
+        감성커피만의 아이덴티티를 살렸습니다.
+    </p>
+</div>
+<div class="layer2 bg">
+    <p class="sub_text t_center">
+        때로는 힘겨웠고 또 즐거웠던 당신의 이야기.<br>
+        진심의 마음으로 듣고 진심의 마음으로 답하겠습니다.
+    </p>
+</div>
+<div class="int over_h">
+    <div class="boardWrap">
+        <p class="int_title"><img src="<?=$root?>/img/page/brand/4/int_title.png" alt="" class="w100"></p>
+    	<ul class="tabmenu fs_def">
+    		<li class="on"><a href="#none">인테리어</a></li>
+    		<li><a href="#none">익스테리어</a></li>
+    	</ul>
+    	<div class="tab_conts">
+    		<div class="interior_slider">
+                <div class="swiper-container">
+    				<ul class="swiper-wrapper">
+    					<li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/int_sl1.jpg" alt="" class="w100"></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/4/int_sl1.jpg" alt="" class="w100"></li>
+    				</ul>
+    			</div>
+            </div>
+    		<div class="tab_cont02" style="display:none"></div>
+    	</div>
+        <ul class="int_paging tab_paging fs_def t_center">
+            <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+            <li><a href="#none"></a></li>
+        </ul>
+    </div>
+</div>
+<?php
+include_once('../inc/bottom.php');
+?>

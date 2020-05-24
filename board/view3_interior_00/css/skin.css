@@ -1,0 +1,44 @@
+.interior_slider{position:relative}
+.interior_slider .swiper-container{overflow:visible}
+.interior_slider .swiper-slide{position:relative;opacity:0.3}
+.interior_slider .swiper-slide:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.3)}
+.interior_slider .swiper-slide.swiper-slide-active{opacity:1}
+.interior_slider .swiper-slide.swiper-slide-active:before{display:none}
+.interior_paging{padding-top:47px}
+
+.lyr_paging li{width:21px;height:21px;margin-left:10px}
+.lyr_paging li:first-child{margin-left:0}
+.lyr_paging li a{display:block;width:100%;height:100%;background-repeat:no-repeat;background-position:0 0;background-image:url('../img/lyr1_paging.png')}
+.lyr_paging li.swiper-pagination-bullet-active a, .lyr_paging li a:hover{background-position:0 -21px}
+
+.page_title .grad{width:1099px;background-image:url('../img/grad_ttl.png')}
+.layer1{padding-bottom:90px}
+.layer1 .lyr1_dec{left:0;top:290px;width:100%}
+.layer1 .titles_wrap{margin-bottom:0}
+.layer1 .lyr1_ttl{padding:92px 0 102px}
+.layer1 .left_area{width:650px;margin-left:-50px}
+.layer1 .lyr1_paging{padding-top:40px}
+.layer1 .right_area{width:600px;padding-top:26px}
+.layer1 .right_area li{margin-bottom:50px}
+.layer1 .li_ttl{margin-bottom:18px;font-family:'NotoSansKR-Light';font-size:30px;line-height:150%;letter-spacing:-0.05em;color:#222}
+.layer1 .li_ttl em{font-family:'NotoSansKR-Bold'}
+.layer1 .li_txt{font-size:18px;line-height:167%;letter-spacing:-0.05em;color:#484848}
+.layer1 .cloud{opacity:0;left:0;top:0}
+
+.layer2{position:relative;padding-top:180px;height:650px;box-sizing:border-box}
+.lyr2_bg{position:absolute;left:0;top:0;width:100%;height:100%}
+.lyr2_bg .swiper-slide{width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover}
+.lyr2_bg .swiper-slide.slide1{background-image:url('../img/lyr2_bg.jpg')}
+.lyr2_bg .swiper-slide.slide2{background-image:url('../img/lyr2_bg2.jpg')}
+.lyr2_bg .swiper-slide.slide3{background-image:url('../img/lyr2_bg3.jpg')}
+.layer2 .text_box{padding-top:9px;width:817px;height:197px;margin:0 auto 30px;background:url('../img/lyr2_border.png')no-repeat center;box-sizing:border-box;position:relative;z-index:1}
+.layer2 .text_box li{margin-bottom:1px;margin-right:2px}
+.layer2 .text_box li:first-child{margin-left:92px}
+.layer2 .text_box li:nth-child(8){margin-left:1px}
+.layer2 .text_box li:nth-child(2), .layer2 .text_box li:nth-child(5), .layer2 .text_box li:nth-child(10), .layer2 .text_box li:nth-child(11), .layer2 .text_box li:nth-child(13){margin-right:1px}
+.layer2 .text{color:#fff;position:relative;z-index:1}
+
+#boardWrap{padding-top:120px;padding-bottom:100px;margin:0 auto}
+.tabmenu{padding:45px 0 30px}
+.tabmenu li:first-child a{background-image:url('../img/tab1.png')}
+.tabmenu li:last-child a{background-image:url('../img/tab2.png')}

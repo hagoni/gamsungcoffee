@@ -1,0 +1,33 @@
+.place_find_container{padding-bottom:3.125vw;background-color:#fff}
+.place_find_wrap{position:absolute;left:4.6875vw;top:4.6875vw;width:90.625vw;z-index:10}
+.place_find_wrap .cols{display:inline-block;width:100%;vertical-align:top}
+.placefindbyname{position:relative;width:100%;height:12.5vw;box-sizing:border-box}
+.placefindbyname label{display:block;position:absolute;left:0;top:0;width:78.125vw;height:100%;padding-left:5vw;font-size:3.75vw;letter-spacing:-0.05em;line-height:12.5vw;color:rgba(0,0,0,0.5)}
+.place_name{width:78.125vw;height:12.5vw;padding-left:4.6875vw;border:0.625vw solid #e9c161;font-size:3.75vw;letter-spacing:-0.05em;color:rgba(0,0,0,0.5);box-sizing:border-box}
+.place_btn{position:absolute;right:0;top:0;width:12.5vw;height:12.5vw;border:none;border-radius:0;background:url('../../../img/page/find/01/find_ico.jpg')no-repeat center;background-size:cover;font-size:0}
+#placeLoadMap{width:100%;height:110.9375vw;background-color:#aaa}
+
+.store_list_wrap{padding:3.125vw 0 7.8125vw}
+.store_list{width:89.0625vw;margin:0 auto}
+.store_list li{width:43.75vw;margin-left:1.5625vw;margin-bottom:7.8125vw}
+.store_list li:nth-child(2n-1){margin-left:0}
+.store_list .img_area{width:43.75vw;height:31.25vw;background-repeat:no-repeat;background-position:center;background-size:cover}
+.store_list .text_area{padding:4.375vw 0 0}
+.store_list .text_area > .fs_def{max-width:100%}
+.store_list .text_area .gender{vertical-align:middle;padding:0 0.9375vw;font-family:'NotoSansKR-Medium';font-size:3.125vw;letter-spacing:-0.05em;color:rgba(34,34,34,0.5)}
+.store_list .text_area .store_name{vertical-align:middle;max-width:28.125vw;font-family:'NotoSansKR-Medium';font-size:4.6875vw;letter-spacing:-0.05em;color:#000}
+.store_list .text_area .store_addr{padding:1.875vw 4.6875vw 2.5vw;font-size:3.125vw;letter-spacing:-0.05em;color:#666}
+.store_list .text_area .rmn{display:inline-block;margin:0 auto;height:6.25vw;padding:0 1.25vw;background-color:#0fc16b;font-family:'NotoSansKR-Medium';font-size:3.125vw;line-height:6.25vw;letter-spacing:-0.05em;color:#fff}
+
+.place_modal{overflow:hidden;position:relative;width:140px}
+.place_title{position:relative;height:20px;margin:1px 0 0 2px;padding-left:10px;border-bottom:1px solid #ebebeb;font-weight:700;font-size:0.875em;line-height:20px;letter-spacing:-0.05em}
+.place_cont{position:relative;margin:1px 0 0 2px;padding:5px 10px 0;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-ms-box-sizing:border-box;
+box-sizing:border-box;
+}
+.place_addr{font-size:0.875em;color:#888;line-height:120%;letter-spacing:-0.05em}
+.more_btn_wrap{display:block;position:relative;width:60px;height:18px;margin:5px auto 0;border-radius:2px;background-color:#2b2a28;font-size:0.75em;line-height:18px;letter-spacing:-0.05em;color:#fff;text-align:center}
+
+.markerIcon{width:47px;height:42px;padding-top:15px;background:url('../../../../img/page/find/01/marker.png') no-repeat;background-size:contain;font-size:14px;font-family:'NotoSansKR-Medium';color:#14ae67;text-align:center}

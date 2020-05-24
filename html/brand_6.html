@@ -1,0 +1,31 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title .grad{width:771px;background-image:url('../img/page/brand/06/grad_ttl.png')}
+.temp{height:1766px;background:url('../img/page/brand/06/br6_temp.jpg')no-repeat center}
+</style>
+        <div class="br6">
+            <div class="page_title_area">
+                <div class="titles_wrap">
+                    <p class="box_title">감성커피 BI</p>
+                    <p class="page_title fs_def" data-motion-offset="1">
+                        <img src="<?=$root?>/img/page/brand/06/br6_ttl.jpg" alt="브랜드 아이덴티티">
+                        <span class="grad grad_l el1_0"></span>
+                        <span class="line line_l"><span class="el1_1"></span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="temp"></div>
+        </div>
+<script>
+new YMotion([
+    [
+        {el: '.el1_0', set: {backgroundPositionX: "0"}, to: {backgroundPositionX: "771", ease: Back.Power0}, d: 2.4},
+        {el: '.el1_1', set: {width: "0%"}, to: {width: "100%"}, d: 0.6, t: '-=1.0'},
+    ],
+]).activate();
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

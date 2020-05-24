@@ -1,0 +1,103 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.empty{height:0}
+html, body, #wrap{height:100%}
+.sub_visual{overflow:hidden;height:100%;margin-bottom:76px;background-image:url('../img/sub/sub_visual1_1.jpg')}
+.dimension-fix{position:relative;overflow:hidden;height:100%}
+.sub_visual .ovl{display:block;position:absolute;left:0;top:0;width:100%;height:100%;background:url('../img/main/new/pattern.png')repeat;z-index:5}
+.video_wrap{position:absolute;left:0;top:0;width:100%;height:100%}
+.video_wrap iframe{position:absolute;left:0;top:0;width:100%}
+
+.sub_title_area{position:absolute;left:0;top:50%;width:100%;z-index:10;
+-webkit-transform:translateY(-50%);
+transform:translateY(-50%)
+}
+.sub_title{padding:0 0 50px 0}
+.sub_text{font-size:25px;line-height:200%;color:#ccc}
+.mv_scroll{display:block;z-index:10}
+.lnb_wrap{top:100%;background:#fff}
+.lnb a{font-family:'NotoSansKR-DemiLight';color:#666;line-height:76px}
+.lnb li.on a:after, .lnb a:hover:after{display:none}
+.lnb li.on a, .lnb a:hover{font-family:'NotoSansKR-Bold';color:#222}
+
+.layer{position:relative;overflow:hidden;height:650px}
+.layer .t50{left:0}
+.layer.even .t50{left:640px}
+.layer .eng_title{padding-bottom:15px}
+.layer .text{padding-top:25px;color:#ccc}
+.layer .link{display:block;margin-top:45px;width:160px;line-height:50px;border:1px solid rgba(14,4,7,0.3);font-family:'NotoSansKR-Light';font-size:16px;letter-spacing:-0.05em;color:#222;text-align:center}
+
+.layer1{background-image:url('../img/page/brand/01/lyr1_bg.jpg')}
+.layer2 .lyr2_bg{position:absolute;left:0;top:0;width:100%;height:100%;background-image:url('../img/page/brand/01/lyr2_bg.jpg')}
+.layer3{background-color:#e1e1e1}
+.layer3 .text{color:#484848}
+.layer4{background-image:url('../img/page/brand/01/lyr4_bg.jpg')}
+.layer4 .link{border-color:rgba(255,255,255,0.3);color:#fff}
+
+.layer1 .ovl{opacity:0;top:0;margin-left:-1000px;width:2000px;height:650px;background:url('../img/page/brand/01/lyr1_ovl.png')no-repeat center}
+.layer1 .lyr1_img{top:0;margin-left:-1000px}
+.layer3 .lyr3_img{top:0;margin-left:-1000px}
+.layer3 .lyr3_drop{position:absolute;left:50%}
+.layer3 .lyr3_drop1{top:357px;margin-left:492px}
+.layer3 .lyr3_drop2{top:327px;margin-left:517px}
+.layer3 .lyr3_drop3{top:331px;margin-left:466px}
+.layer4 .lyr4_img{top:0;margin-left:-1000px}
+.layer4 .lyr4_dec{position:absolute;left:50%;top:0;margin-left:-1000px}
+</style>
+        <div class="empty"></div>
+        <div class="layer layer1 rel odd bg" data-motion-offset="1">
+            <div class="lyr1_img l50"><img src="<?=$root?>/img/page/brand/01/lyr1_img.png" alt=""></div>
+            <div class="ovl l50 el1_1"></div>
+            <div class="inner h100">
+                <div class="t50">
+                    <p class="eng_title"><img src="<?=$root?>/img/page/brand/01/lyr1_eng.png" alt="Brand Concept"></p>
+                    <p class="img_title"><img src="<?=$root?>/img/page/brand/01/lyr1_ttl.png" alt="감성커피는 커피만을 판매하지 않습니다"></p>
+                    <p class="text">타 매장에는 없는 감성과 경험을 파는 카페입니다.<br>지친 일상 속을 깨우는 즐거운 감성공간<br>감성커피의 감성은 당신을 설레게 하는<br>새로운 경험을 제공할 것입니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="layer layer2 rel even" data-motion-offset="4">
+            <div class="lyr2_bg bg el4_1"></div>
+            <div class="inner h100">
+                <div class="t50">
+                    <p class="eng_title"><img src="<?=$root?>/img/page/brand/01/lyr2_eng.png" alt="Design of Experience"></p>
+                    <p class="img_title"><img src="<?=$root?>/img/page/brand/01/lyr2_ttl.png" alt="카페 브랜드의 이케아를 추구합니다"></p>
+                    <p class="text">합리적인 가격에 최상의 고객경험을 제공하고자 합니다.<br>레트로 &amp; 모던을 키워드로 고객이 브랜드를 보고 들어와<br>커피를 마시고 나가는 일련의 모든 과정을 세심하게 디자인합니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="layer layer3 odd bg" data-motion-offset="2">
+            <div class="lyr3_img l50"><img src="<?=$root?>/img/page/brand/01/lyr3_img.png" alt=""></div>
+            <div class="lyr3_drop lyr3_drop1 el2_1"><img src="<?=$root?>/img/page/brand/01/lyr3_drop1.png" alt=""></div>
+            <div class="lyr3_drop lyr3_drop2 el2_2"><img src="<?=$root?>/img/page/brand/01/lyr3_drop2.png" alt=""></div>
+            <div class="lyr3_drop lyr3_drop3 el2_3"><img src="<?=$root?>/img/page/brand/01/lyr3_drop3.png" alt=""></div>
+            <div class="inner h100">
+                <div class="t50">
+                    <p class="eng_title"><img src="<?=$root?>/img/page/brand/01/lyr3_eng.png" alt="Coffee &amp; Barista master"></p>
+                    <p class="img_title"><img src="<?=$root?>/img/page/brand/01/lyr3_ttl.png" alt="단순한 커피가 아닙니다"></p>
+                    <p class="text">국내 최고의 바리스타들이 조율하고<br>개발한 커피를 경험할 수 있는 브랜드입니다.<br>오리지널커피, 10가지 원두.  새로움을 추구하는<br>고객 모두 즐길 수 있는, 커피가 맛있는 카페입니다.</p>
+                    <a href="<?=$root?>/html/brand_2.html" class="link">트렌디한 메뉴</a>
+                </div>
+            </div>
+        </div>
+        <div class="layer layer4 even bg" data-motion-offset="3">
+            <div class="lyr4_img l50"><img src="<?=$root?>/img/page/brand/01/lyr4_img.png" alt=""></div>
+            <div class="lyr4_dec1 lyr4_dec el3_1"><img src="<?=$root?>/img/page/brand/01/lyr4_img1.png" alt=""></div>
+            <div class="lyr4_dec2 lyr4_dec el3_2"><img src="<?=$root?>/img/page/brand/01/lyr4_img2.png" alt=""></div>
+            <div class="lyr4_dec3 lyr4_dec el3_3"><img src="<?=$root?>/img/page/brand/01/lyr4_img3.png" alt=""></div>
+            <div class="inner h100">
+                <div class="t50">
+                    <p class="eng_title"><img src="<?=$root?>/img/page/brand/01/lyr4_eng.png" alt="SENSIBILITY"></p>
+                    <p class="img_title"><img src="<?=$root?>/img/page/brand/01/lyr4_ttl.png" alt="커피가 아닌 감성을 팝니다"></p>
+                    <p class="text">감성을 중심으로 한 감성커피는 매장을 찾는<br>고객님들이 공감하고<br>위로 받을 수 있는 공간을 만들고자 노력합니다.</p>
+                    <a href="<?=$root?>/html/brand_2.html" class="link">브랜드 독창성</a>
+                </div>
+            </div>
+        </div>
+<script src="//player.vimeo.com/api/player.js"></script>
+<script src="<?=$root?>/js/brand_1.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

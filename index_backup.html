@@ -1,0 +1,451 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"./view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $root;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=1260">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<div id="wrap">
+<?php
+include_once('inc/header.php');
+?>
+	<!-- main_visual start -->
+	<div class="main_visual rel">
+		<div class="swiper-container">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<div class="dimension-fix">
+						<div class="mv_bg"><img src="<?=$root?>/img/main/mv_temp.jpg" alt=""></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<ul class="mv_paging fs_def">
+			<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+			<li><a href="#none"></a></li>
+			<li><a href="#none"></a></li>
+			<li><a href="#none"></a></li>
+		</ul>
+	</div>
+	<!-- //main_visual end -->
+	<!-- trend start -->
+	<div class="trend rel over_h">
+		<div class="title_wrap rel">
+			<div class="title_area">
+				<p class="stitle"><img src="<?=$root?>/img/main/trend_sttl.png" alt="무시무시한 감성커피의 메뉴들"></p>
+				<p class="title"><img src="<?=$root?>/img/main/trend_ttl.png" alt="#트렌드가 땡긴다"></p>
+			</div>
+		</div>
+		<div class="trend_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img1.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 타이거 라떼</p>
+								<p class="menu_en">Taiwan Tiger Latte</p>
+							</div>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img2.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 타이거 밀크티</p>
+								<p class="menu_en">Taiwan Tiger Milktea</p>
+							</div>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img3.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 리얼 밀크티</p>
+								<p class="menu_en">Taiwan Real Milktea</p>
+							</div>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img1.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 타이거 라떼</p>
+								<p class="menu_en">Taiwan Tiger Latte</p>
+							</div>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img2.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 타이거 밀크티</p>
+								<p class="menu_en">Taiwan Tiger Milktea</p>
+							</div>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#none">
+							<div class="img_area"><img src="<?=$root?>/img/main/trend_img3.png" alt=""></div>
+							<div class="text_area">
+								<p class="menu_kr">대만 리얼 밀크티</p>
+								<p class="menu_en">Taiwan Real Milktea</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="center">
+			<p class="trend_text">
+				혹시나 했는데 역시나,<br>
+				<em>언제나처럼 감성커피에는 존재했다.</em>
+			</p>
+			<button type="button" class="trend_btns trend_prev">이전</button>
+			<button type="button" class="trend_btns trend_next">다음</button>
+		</div>
+	</div>
+	<!-- //trend end -->
+	<!-- count start -->
+	<div class="count over_h">
+		<div class="count_video">
+			<img src="<?=$root?>/img/main/count_video.jpg" alt="">
+		</div>
+		<div class="center">
+			<ul class="fs_def">
+				<li>
+					<p class="rolling_num">200<span>개</span></p>
+					<p class="rolling_ttl"><img src="<?=$root?>/img/main/count_li1.png" alt="가맹점수"></p>
+				</li>
+				<li>
+					<p class="rolling_num">12,492<span>잔</span></p>
+					<p class="rolling_ttl"><img src="<?=$root?>/img/main/count_li2.png" alt="아메리카노 일일 판매 수"></p>
+				</li>
+				<li>
+					<p class="rolling_num">5,854<span>잔</span></p>
+					<p class="rolling_ttl"><img src="<?=$root?>/img/main/count_li3.png" alt="시그니처 메뉴 일일 판매 수"></p>
+				</li>
+				<li>
+					<p class="rolling_num">20<span>%</span></p>
+					<p class="rolling_ttl"><img src="<?=$root?>/img/main/count_li4.png" alt="감성잡화점 일일 총매출 비"></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //count end -->
+	<!-- story start -->
+	<div class="story rel over_h">
+		<div class="center">
+			<div class="title_area">
+				<p class="box_stitle">감성커피 성공스토리</p>
+				<p class="title"><img src="<?=$root?>/img/main/story_ttl.png" alt="#진한커피 찐한 성공"></p>
+			</div>
+			<p class="story_ttl1"><img src="<?=$root?>/img/main/story_ttl1.png" alt="다점포 매장 운영 비율 20%"></p>
+			<p class="story_ttl2"><img src="<?=$root?>/img/main/story_ttl2.png" alt="11개월만에 2호점을 개설하다"></p>
+		</div>
+		<p class="story_txt1 story_txt l50">다점포창업도 ‘감성커피’로! 전주에서 붐을 일으키고 있습니다</p>
+		<p class="story_txt2 story_txt l50">다점포 매장 운영은 가맹점의 높은 브랜드 만족도가 선행되야 합니다.</p>
+		<div class="story_line1 abs"></div>
+		<div class="story_line2 l50"></div>
+		<div class="story_img1 l50"><img src="<?=$root?>/img/main/story_img1.png" alt=""></div>
+		<div class="story_img2 l50"><img src="<?=$root?>/img/main/story_img2.png" alt=""></div>
+	</div>
+	<!-- //story end -->
+	<!-- brand start -->
+	<div class="brand rel over_h">
+		<div class="title_area rel">
+			<div class="center t_right">
+				<p class="title"><img src="<?=$root?>/img/main/brand_ttl.png" alt="당신이 꿈꿔왔던 상상속의 브랜드, 우리가 만듭니다."></p>
+			</div>
+		</div>
+		<div class="center">
+			<div class="brand_dec1 l50"><img src="<?=$root?>/img/main/brand_dec1.png" alt="Gamsung"></div>
+			<div class="brand_dec2 l50"><img src="<?=$root?>/img/main/brand_dec2.png" alt="Co"></div>
+			<div class="brand_dec3 l50"><img src="<?=$root?>/img/main/brand_dec3.png" alt="ffee"></div>
+			<div class="brand_img1 abs"><img src="<?=$root?>/img/main/brand_img1.jpg" alt=""></div>
+			<div class="brand_img2 abs"><img src="<?=$root?>/img/main/brand_img2.jpg" alt=""></div>
+			<div class="brst_slide abs">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/brand_sl1.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/brand_sl1.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/brand_sl1.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/brand_sl1.jpg" alt=""></li>
+						<li class="swiper-slide"><img src="<?=$root?>/img/main/brand_sl1.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+			<div class="text_area1 text_area">
+				<p class="brand_ttl"><img src="<?=$root?>/img/main/brand_ttl1.png" alt="추억을 사다 감성잡화점"></p>
+				<p class="brand_txt">
+					남들이하지 않는 것을 잘해내는 유니크함 .<br>
+					감각적인 디자인으로 눈길을 끌어<br>
+					품질이 입증된 구매도 높은 제품들을<br>
+					만나보세요.
+				</p>
+				<a href="#none" class="brand_link">자세히 보기</a>
+			</div>
+			<div class="text_area2 text_area">
+				<p class="brand_ttl"><img src="<?=$root?>/img/main/brand_ttl2.png" alt="가장 트렌디한 커피를 만나는 방법"></p>
+				<p class="brand_txt">
+					이런 커피가 있었어?<br>
+					우연히 알게된 트렌디한 커피가 있다면<br>
+					망설이지 말고 감성커피로 향해 주세요.
+				</p>
+				<a href="#none" class="brand_link">자세히 보기</a>
+			</div>
+			<div class="text_area3 text_area">
+				<p class="brand_ttl"><img src="<?=$root?>/img/main/brand_ttl3.png" alt="트렌드를 이끄는 엉뚱 발랄한 5인의 특급 바리스타"></p>
+				<ul class="brst_paging">
+					<li class="swiper-pagination-bullet-active"><a href="#none"><img src="<?=$root?>/img/main/brand_name1.png" alt="이현수 바리스타"></a></li>
+					<li><a href="#none"><img src="<?=$root?>/img/main/brand_name2.png" alt="이성근 바리스타"></a></li>
+					<li><a href="#none"><img src="<?=$root?>/img/main/brand_name3.png" alt="임진우 바리스타"></a></li>
+					<li><a href="#none"><img src="<?=$root?>/img/main/brand_name4.png" alt="박민정 바리스타"></a></li>
+					<li><a href="#none"><img src="<?=$root?>/img/main/brand_name5.png" alt="윤지인 바리스타"></a></li>
+				</ul>
+				<a href="#none" class="brand_link">자세히 보기</a>
+			</div>
+		</div>
+	</div>
+	<!-- //brand end -->
+	<!-- notice start -->
+	<div class="notice over_h">
+		<div class="center">
+			<div class="title_area">
+				<p class="box_stitle">감성커피 성공스토리</p>
+				<p class="title"><img src="<?=$root?>/img/main/notice_ttl.png" alt="#넌 지금 커피가 땡긴다"></p>
+			</div>
+			<div class="notice_cont over_h">
+				<div class="left_area f_left">
+					<p class="img_title"><img src="<?=$root?>/img/main/notice_ttl1.png" alt="감성커피의 새로운 소식"></p>
+					<a href="#none" class="notice_link">소식보기</a>
+				</div>
+				<div class="right_area f_right">
+					<ul class="notice_list">
+						<li>
+							<a href="#none">
+								<div class="text_area">
+									<p class="not_title ellipsis">감성커피 사이트가 새롭게 리뉴얼되었습니다. 감성커피 사이트가 새롭게 리뉴얼되었습니다.</p>
+									<p class="not_text ellipsis">고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가 고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가</p>
+								</div>
+								<p class="date_area">2019.07.01</p>
+							</a>
+						</li>
+						<li>
+							<a href="#none">
+								<div class="text_area">
+									<p class="not_title ellipsis">감성커피 사이트가 새롭게 리뉴얼되었습니다. 감성커피 사이트가 새롭게 리뉴얼되었습니다.</p>
+									<p class="not_text ellipsis">고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가 고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가</p>
+								</div>
+								<p class="date_area">2019.07.01</p>
+							</a>
+						</li>
+						<li>
+							<a href="#none">
+								<div class="text_area">
+									<p class="not_title ellipsis">감성커피 사이트가 새롭게 리뉴얼되었습니다. 감성커피 사이트가 새롭게 리뉴얼되었습니다.</p>
+									<p class="not_text ellipsis">고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가 고객님과 예비 점주님들에게 더 좋은 정보를 드리기 위해 감성커피 사이트가</p>
+								</div>
+								<p class="date_area">2019.07.01</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="insta">
+			<div class="insta_slide">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img1.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img2.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img3.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img4.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img5.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img6.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('../img/main/insta_img7.jpg')">
+								<div class="text_area">
+									<div class="insta_logo"><img src="<?=$root?>/img/main/insta_logo.png" alt=""></div>
+									<p class="insta_text">
+										감성커피에는 요즘 핫한<br>
+										흑당 버블티까지!<br>
+										JMT JMT!
+									</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //notice end -->
+	<!-- cf start -->
+	<div class="cf"></div>
+	<!-- //cf end -->
+<?php
+include_once('inc/footer.php');
+?>
+</div>
+
+<script>
+var CONST_REQUEST_ROOT = '<?=$request_root?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$root?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('type02', {
+			callback: popupCallback
+		});
+		new Popup('type03', {
+			callback: popupCallback
+		});
+		new Popup('type04', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

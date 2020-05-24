@@ -1,0 +1,664 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+@import url('../css/board.css');
+@import url('../board/view3_inquiry_00/css/skin.css');
+
+#boardWrap{padding-top:5vw}
+/* .header_wrap{position:absolute;left:0;top:0} */
+.lnb_wrap.scroll{position:fixed;left:0;top:15.625vw;border-top:1px solid #d3d3d3}
+.sub_fs30{font-family:'NotoSansKR-Light';font-size:4.6875vw;letter-spacing:-0.03em;line-height:125%}
+.sub_fs25{font-family:'NotoSansKR-Light';font-size:4.0625vw;letter-spacing:-0.05em;line-height:160%}
+.underline{display:inline-block;border-bottom:1px solid #222;line-height:110%}
+.sub_num{font-family:'TmonMonsori';font-size:10.9375vw;color:#222;text-align:center}
+.sub_num span{font-family:'NotoSansKR-Bold';font-size:5.625vw}
+
+.layer1 .titles_wrap .line{margin-bottom:7.8125vw}
+.layer1 .lyr1_slide{width:59.375vw;height:89.6875vw;margin:0 auto}
+.layer1 .lyr1_slide_text{position:absolute;top:0;left:50%;margin-left:-29.6875vw}
+.layer1 .lyr1_slide_text .swiper-container{overflow:visible}
+.lyr1_slide li{color:#222}
+.lyr1_slide li.swiper-slide-active{color:#fff}
+.lyr1_slide li.swiper-slide-active .line{background:#fff}
+.layer1 .lyr1_paging{padding:7.8125vw 0 15.625vw}
+.lyr1_slide .text_box{position:absolute;top:0;left:2.1875vw;height:100%}
+.lyr1_slide .text_box p{padding-left:3.4375vw;letter-spacing:-0.05em}
+.lyr1_slide .lyr1_subtitle{padding:29.6875vw 0 3.4375vw;font-size:3.4375vw}
+.lyr1_slide .lyr1_title{padding-bottom:3.125vw;font-family:'NotoSansKR-Light';font-size:6.25vw;line-height:150%}
+.lyr1_slide .line{display:block;width:54.6875vw;height:2px;background:#000}
+.lyr1_slide .lyr1_ex a{position:relative;display:inline-block;margin-top:4.6875vw;padding-right:4.6875vw;font-size:3.4375vw}
+.lyr1_slide .lyr1_ex a::before{content:"";position:absolute;right:0;top:0.6vw;width:1.25vw;height:2.8125vw;background:url('../img/page/fran/lyr1_arr.png');background-repeat:no-repeat;background-size:contain}
+
+.layer2{height:156.25vw;background-image:url('../img/page/fran/lyr2_bg.jpg')}
+.layer2 .lyr2_title{padding:15.625vw 0 68.75vw}
+.layer2 .sub_fs30{padding-bottom:2.5vw;font-family:'NotoSansKR-Light';font-size:4.6875vw;color:#222}
+.layer2 .sub_text{color:#484848}
+
+.layer3{background:#e9e9e9}
+.layer3 .lyr3_title{padding:15.625vw 0 5vw}
+.layer3 .sub_text{padding-bottom:7.1875vw;color:#484848}
+
+.layer4 .lyr4_title{padding:15.625vw 0 6.25vw}
+.layer4 .lyr4_slide{width:87.5vw;height:53.125vw;margin:0 auto}
+.layer4 .lyr4_slide .swiper-container{overflow:visible}
+.layer4 .lyr4_slide li img{display:block;width:82.8125vw;margin:0 auto}
+.layer4 .lyr4_textimg{padding:7.8125vw 0 2.34375vw}
+.layer4 .sub_fs25{padding-top:3vw;line-height:240%;color:#222}
+.layer4 .btn_a{margin-bottom:15.625vw;border:1px solid rgba(0,0,0,0.3);color:#666}
+
+.layer5 .hershey{background:#360808}
+.layer5 .malangcow{background:#181846}
+.layer5 .lyr5_title{padding:15.625vw 0 4.6875vw}
+.layer5 .sub_text{color:#fff}
+
+.layer6{padding-bottom:15vw}
+.layer6 .lyr6_title{padding:17.1875vw 0 2vw}
+.layer6 .lyr6_subtitle{position:relative;padding-right:4.6875vw;padding-bottom:2.5vw;text-align:right;font-family:'TmonMonsori';font-size:15.625vw;color:#222}
+.layer6 .lyr6_subtitle .unit{display:inline-block;width:5vw;margin-left:1vw}
+.layer6 .lyr6_subtitle .unit img{vertical-align:baseline}
+.layer6 .lyr6_subtitle .line{position:absolute;top:7.8125vw;left:0;display:inline-block;width:64.0625vw;height:2px;background:#222}
+.layer6 .sub_fs30{padding:5vw 0 3vw;color:#222}
+.layer6 .sub_text{color:#484848}
+.layer6 .sub_textimg{padding-bottom:2.8125vw}
+.layer6 .lyr6_slide{margin-left:4.6875vw;margin-top:6.5625vw;margin-left:4.6875vw}
+.layer6 .lyr6_slide .swiper-container{overflow:visible}
+.layer6 .lyr6_slide li{width:42.1875vw;padding-right:3.125vw;}
+.layer6 .lyr6_slide li>div{display:block;width:42.1875vw;height:60.3125vw;margin:0 auto;border:1px solid rgba(167,167,167,0.5);box-sizing:border-box;background:#f7f7f7}
+.layer6 .lyr6_slide .sub_fs25{padding:1.875vw 0 0 3.4375vw;color:#222}
+
+.layer7{height:78.4375vw;background-image:url('../img/page/fran/lyr7_bg.jpg')}
+.layer7 .lyr7_title{padding-top:30.3125vw}
+
+.layer8{background:#e9e9e9}
+.layer8 .lyr8_title{padding:15.625vw 0 6.25vw}
+.layer8 .lyr8_slide{width:87.5vw;margin:0 auto}
+.layer8 .lyr8_slide .swiper-container{overflow:visible}
+.layer8 .lyr8_slide li img{display:block;width:82.8125vw;margin:0 auto}
+.layer8 .lyr8_slide .lyr8_sltext{position:absolute;top:0;left:50%;margin-left:-41.4062vw;width:82.8125vw;background:rgba(0,0,0,0.6);font-size:4.0625vw;line-height:10.3125vw;color:#fff}
+.layer8 .lyr8_slide .sub_text{color:#484848}
+.layer8 .lyr8_slide .fw_m{padding:4.6875vw 0 1.25vw;color:#222}
+.layer8 .tab_paging{padding:7.5vw 0 15.625vw}
+
+.layer9{background:#e9e9e9}
+.layer9 .lyr9_title{padding:0 0 5.625vw}
+.layer9 .lyr9_slide{margin-left:4.6875vw}
+.layer9 .lyr9_slide .swiper-container{overflow:visible}
+.layer9 .lyr9_slide li{width:54.6875vw;padding-right:3.125vw}
+.layer9 .lyr9_slide li img{display:block;width:100%}
+.layer9 .lyr9_slide .sub_fs30{padding:4.6875vw 0 1.25vw;font-size:4.0625vw;letter-spacing:-0.05em;line-height:140%}
+.layer9 .tab_paging{padding:7.5vw 0 15.625vw}
+
+.layer10{background:#dfd7cb;padding-bottom:9.375vw}
+.layer10 .lyr10_title{padding:14.375vw 0 4.6875vw}
+.layer10 .sub_text{color:#484848}
+.layer10 .tabmenu{padding:6.5625vw 0 7.5vw}
+.tabmenu li:nth-child(1) a{background-image:url('../img/page/fran/lyr10_tab1.png')}
+.tabmenu li:nth-child(2) a{background-image:url('../img/page/fran/lyr10_tab2.png')}
+.layer10 .over_s{overflow-x:scroll}
+.layer10 .table_inner{width:187.5vw;margin:0 4.6875vw;padding-right:4.6875vw}
+.layer10 .unit{padding-bottom:2.5vw;font-size:3.125vw;color:#666}
+.layer10 .lyr10_extra{padding:3.75vw 0 5vw;font-family:'NotoSansKR-DemiLight';font-size:3.125vw;color:#666;line-height:160%}
+.layer10 .lyr10_table{table-layout:fixed;width:187.5vw;height:117.5vw;font-size:3.4375vw;background-image:url('../img/page/fran/lyr10_table.png');background-repeat:no-repeat;background-size:100%;}
+.lyr10_table td, th{vertical-align:middle;text-align:center;letter-spacing:0em}
+.lyr10_table th{height:10.625vw;margin-bottom:2px;color:#fff}
+.lyr10_table td{height:9.375vw}
+.lyr10_table tbody tr:first-child td{height:10vw}
+.lyr10_table tfoot td{height:11.5625vw;font-family:'NotoSansKR-Bold';font-size:4.0625vw;}
+.lyr10_table td.h_120{height:19.375vw}
+.lyr10_table td.content{font-size:3.125vw;text-align:left;line-height:5vw;color:#666}
+
+.layer11 .lyr11_title{padding:15.625vw 0 4vw}
+.layer11 .sub_text{color:#484848}
+
+/* 팝업 */
+.clt_top_pop{overflow:auto;position:fixed;left:0;top:0;width:100%;height:100%;z-index:1000;background:#ece9dd}
+.clt_top_vis{position:fixed;left:0;top:0;z-index:10;width:100%;height:84vw;background:url('../img/page/culture/clt_top_bg.jpg') no-repeat 50% 0;background-size:cover}
+.clt_top_vis .artb_sb{padding:11.71875vw 0 6.25vw 5.46875vw;font-family:'Arita-buriSB';font-size:4.6875vw;letter-spacing:-0.025em;line-height:133%;color:#fff}
+.clt_top_vis .img_area{position:absolute;left:0;top:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover}
+.clt_top_vis .text_area{width:89.0625vw;margin:0 auto}
+.clt_top_vis .video_area{position:relative;height:60vw;margin-top:13vw}
+.clt_top_vis .video_area img, .clt_top_vis .video_area iframe{position:absolute;left:0;top:0;width:100%;height:100%}
+.clt_top_text{padding-top:84vw;width:89.0625vw;margin:0 auto;padding-bottom:15vw}
+.clt_top_text *{font-size:3.4375vw;line-height:160%}
+.clt_txt_title{padding:10.9375vw 0 7.8125vw;font-family:'NotoSansKR-Bold';font-size:4.375vw;letter-spacing:-0.025em;line-height:164%;color:#000}
+.clt_pop_close{position:fixed;right:0;top:0;z-index:20;width:11.71875vw}
+</style>
+<div class="layer1 chapters rel over_h chapters">
+    <div class="titles_wrap">
+        <p class="box_title">감성커피 성공스토리</p>
+        <p class="page_title"><img src="<?=$root?>/img/page/fran/page_title.png" alt="진한커피 찐한성공" class="w100"></p>
+        <span class="line"></span>
+    </div>
+<?
+$suc_sql = "select * from ".TABLE_LEFT."success_01 where view3_use = 1 order by view3_order desc, view3_write_day desc";
+$suc_res = mysql_query($suc_sql);
+$HTML_LI = "";
+$HTML_CO = "";
+while ($suc_lst = mysql_fetch_assoc($suc_res)) {
+    $path_view = URL_PATH;
+    $suc_img = explode("||",$suc_lst['view3_file']);
+    $title = view3_html($suc_lst['view3_title_01']);
+    $HTML_LI .= "<li class='swiper-slide'>";
+    $HTML_LI .= "<img src='{$request_root}/upload/success_01{$suc_img[2]}' alt='' class='w100'>";
+    $HTML_LI .= "</li>";
+
+    $HTML_CO .= "<li class='swiper-slide'>";
+    $HTML_CO .= "<div class='text_box'>";
+    $HTML_CO .= "<p class='lyr1_subtitle'>{$suc_lst['view3_special_01']}</p>";
+    $HTML_CO .= "<p class='lyr1_title fw_b'>{$title}</p>";
+    $HTML_CO .= "<span class='line'></span>";
+    $HTML_CO .= "<p class='lyr1_ex'><a href='{$path_view}' data-idx='{$suc_lst['view3_idx']}'>{$suc_lst['view3_special_01']}</a></p>";
+    $HTML_CO .= "</div>";
+    $HTML_CO .= "</li>";
+}
+?>
+    <div class="rel">
+        <div class="lyr1_slide lyr1_slide_img">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <?=$HTML_LI?>
+                    <!-- <li class="swiper-slide swiper-slide-active">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl1.jpg" alt="" class="w100">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl2.jpg" alt="" class="w100">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl3.jpg" alt="" class="w100">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl4.jpg" alt="" class="w100">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl5.jpg" alt="" class="w100">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="<?=$root?>/img/page/fran/lyr1_sl6.jpg" alt="" class="w100">
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="lyr1_slide lyr1_slide_text">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <?=$HTML_CO?>
+                    <!-- <li class="swiper-slide swiper-slide-active">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">다점포 점주</p>
+                            <p class="lyr1_title fw_b">11개월만에<br><em>2호점을 개설하다</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">전주 객사점 성공사례</a></p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">브랜드 변경 창업</p>
+                            <p class="lyr1_title fw_b">카페 브랜드 변경<br><em>감성커피로 성공</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">광주 경안점 성공사례</a></p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">주부창업·초보창업</p>
+                            <p class="lyr1_title fw_b">커피를 몰랐던<br><em>주부도 창업하다</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">대전 탄방점 성공사례</a></p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide swiper-slide-active">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">확실한 선택</p>
+                            <p class="lyr1_title fw_b">테이크아웃 전문카페<br><em>선택과 집중으로 성공</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">대전 을지점 성공사례</a></p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">부부창업·은퇴창업</p>
+                            <p class="lyr1_title fw_b">치킨집 사장님에서<br><em>바리스타로 변신</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">부산 사직점 성공사례</a></p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="text_box">
+                            <p class="lyr1_subtitle">다점포창업·가족창업</p>
+                            <p class="lyr1_title fw_b">가족과 함께 2호점<br><em>감성커피로 확장</em></p>
+                            <span class="line"></span>
+                            <p class="lyr1_ex"><a href="#none">천안 법원점 성공사례</a></p>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="lyr1_paging tab_paging fs_def t_center">
+        <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+    </ul>
+</div>
+<div class="layer2 chapters bg t_center chapters">
+    <p class="lyr2_title"><img src="<?=$root?>/img/page/fran/lyr2_title.png" alt="" class="w100"></p>
+    <p class="sub_fs30 fw_b">
+        혹시나 했는데 역시나.<br>
+        <em>언제나처럼 감성커피에는 존재했다.</em>
+    </p>
+    <p class="sub_text">
+        우연히 알게된 트렌디한 커피가 있다면<br>
+        망설이지 말고 감성커피로 향해 주세요.<br>
+        엉뚱발랄하지만 실력만큼은 알아주는<br>
+        5인 특급 바리스타가 있으니까요.
+    </p>
+</div>
+<div class="layer3 bg chapters">
+    <p class="lyr3_title"><img src="<?=$root?>/img/page/fran/lyr3_title.png" alt="" class="w100"></p>
+    <p class="sub_text fw_b t_center">
+        핫한 열풍의 주인공은 언제나<br>
+        <em>감성커피에서 가장 먼저 만나보실 수 있습니다.</em>
+    </p>
+    <p class="lyr3_img"><img src="<?=$root?>/img/page/fran/lyr3_img.png" alt="" class="w100"></p>
+</div>
+<div class="layer4 over_h chapters">
+    <p class="lyr4_title"><img src="<?=$root?>/img/page/fran/lyr4_title.png" alt="" class="w100"></p>
+    <div class="lyr4_slide">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/lyr4_sl1.jpg" alt="" class="w100"></li>
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/lyr4_sl2.jpg" alt="" class="w100"></li>
+                <li class="swiper-slide"><img src="<?=$root?>/img/page/fran/lyr4_sl3.jpg" alt="" class="w100"></li>
+            </ul>
+        </div>
+    </div>
+    <p class="lyr4_textimg"><img src="<?=$root?>/img/page/fran/lyr4_text.png" alt="" class="w100"></p>
+    <p class="sub_num"><?=number_format($settings_data['info_count_milkcaramel']);?><span> 개</span></p>
+    <p class="t_center sub_fs25 fw_b">
+        세련된 레트로 브랜드 <em>고객의 마음을 사로잡다</em><br>
+        디자인 실용성 <em>두가지를 탁월하게 사로잡다</em><br>
+        당신을 성공으로 이끄는 <em>단 하나의 브랜드</em>
+    </p>
+    <a href="<?=$root?>/html/brand_3.html#3" class="btn_a">자세히 보기</a>
+</div>
+<div class="layer5 bg t_center">
+    <div class="swiper-container">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+                <div class="hershey">
+                    <p class="lyr5_title"><img src="<?=$root?>/img/page/fran/lyr5_title_hershey.png" alt="" class="w100"></p>
+                    <p class="sub_text fw_b">
+                        세계 최고 초콜릿 전문기업<br>
+                        <em>HERSEY’S와의 콜라보는 감성커피가 유일합니다.</em>
+                    </p>
+                    <p><img src="<?=$root?>/img/page/fran/lyr5_img_hershey.png" alt="" class="w100"></p>
+                </div>
+            </li>
+            <li class="swiper-slide">
+                <div class="malangcow">
+                    <p class="lyr5_title"><img src="<?=$root?>/img/page/fran/lyr5_title_malangcow.png" alt="" class="w100"></p>
+                    <p class="sub_text fw_b">
+                        푹신푹신한 말랑카우!<br>
+                        <em>말랑카우와의 콜라보는 감성커피가 유일합니다.</em>
+                    </p>
+                    <p><img src="<?=$root?>/img/page/fran/lyr5_img_malangcow.png" alt="" class="w100"></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="layer6 over_h">
+    <p class="lyr6_title"><img src="<?=$root?>/img/page/fran/lyr6_title1.png" alt="" class="w100"></p>
+    <p class="lyr6_subtitle"><span class="line"></span><?=$settings_data['info_count_multistore'];?><span class="unit"><img src="<?=$root?>/img/page/fran/lyr6_unit.png" alt="" class="w100"></span></p>
+    <p class="sub_text fw_b t_center">
+        다점포 매장 운영은 가맹점의 높은 브랜드 만족도가<br>
+        선행되야 합니다.<br>
+        <em>체계적인 운영 시스템과 높은 만족도로<br>
+        이미 많은 가맹점에서 다점포를 운영하고 있습니다</em>
+    </p>
+    <div class="lyr6_slide">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <div>
+                        <img src="<?=$root?>/img/page/fran/lyr6_sl1.png" alt="" class="w100">
+                        <p class="sub_fs25 fw_b">
+                            신뢰할 수 있는 본사와<br>
+                            <em class="underline">가맹점의 높은</em><br>
+                            <em class="underline">브랜드 만족도</em>
+                        </p>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div>
+                        <img src="<?=$root?>/img/page/fran/lyr6_sl2.png" alt="" class="w100">
+                        <p class="sub_fs25 fw_b">
+                            유사 브랜드 비교시<br>
+                            <em class="underline">10% 이상 저렴한</em><br>
+                            <em class="underline">합리적인 창업 비용</em>
+                        </p>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div>
+                        <img src="<?=$root?>/img/page/fran/lyr6_sl3.png" alt="" class="w100">
+                        <p class="sub_fs25 fw_b">
+                            빠른 투자금<br>
+                            <em class="underline">회수가 가능한</em><br>
+                            <em class="underline">안전한 브랜드 창업</em>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p class="lyr6_title"><img src="<?=$root?>/img/page/fran/lyr6_title2.png" alt="" class="w100"></p>
+    <p class="lyr6_subtitle"><span class="line"></span><?=$settings_data['info_count_signature_avg'];?><span class="unit"><img src="<?=$root?>/img/page/fran/lyr6_unit.png" alt="" class="w100"></span></p>
+    <p class="sub_textimg"><img src="<?=$root?>/img/page/fran/lyr6_text.png" alt="" class="w100"></p>
+    <p class="sub_num"><?=number_format($settings_data['info_count_signature']);?><span> 개</span></p>
+    <p class="sub_fs30 t_center fw_b">
+        시그니처 메뉴로<br>
+        <em>높은 만족도를 창출합니다.</em>
+    </p>
+    <p class="sub_text t_center">
+        브랜드 경쟁력을 창출하는 시그니처 메뉴가 잘 팔려야<br>
+        높은 매출 창출과 안정적인 매장 운영이 가능합니다.
+    </p>
+</div>
+<div class="layer7 bg">
+    <p class="lyr7_title"><img src="<?=$root?>/img/page/fran/lyr7_title.png" alt="" class="w100"></p>
+</div>
+<div class="layer8 over_h chapters chapters">
+    <p class="lyr8_title"><img src="<?=$root?>/img/page/fran/lyr8_title.png" alt="" class="w100"></p>
+    <div class="lyr8_slide">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr8_sl1.jpg" alt="" class="w100">
+                    <p class="lyr8_sltext sub_fs30 t_center fw_b">지속적인 마케팅으로 <em>브랜드의 가치를 높여내다</em></p>
+                    <p class="sub_text fw_m t_center">
+                        <em>본사는 브랜드 가치 창출을 위해 <br>
+                        끊임없이 노력해야 합니다</em>
+                    </p>
+                    <p class="sub_text t_center">
+                        - 지속적인 브랜드 홍보 마케팅.<br>
+                        - 신규 가맹점 시장 진입을 위한 전략 도출.
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr8_sl2.jpg" alt="" class="w100">
+                    <p class="lyr8_sltext sub_fs30 t_center fw_b"><em>본사 자체 인테리어 시공팀을 운영합니다.</em></p>
+                    <p class="sub_text fw_m t_center">
+                    </p>
+                    <p class="sub_text t_center">
+                        본사 자체적으로 인테리어 시공팀을 운영하고 있어<br>
+                        타 브랜드 대비 10% 이상 저렴한 비용으로<br>
+                        매장 개설이 가능합니다.
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr8_sl3.jpg" alt="" class="w100">
+                    <p class="lyr8_sltext sub_fs30 t_center fw_b"><em>탄탄한 물류 인프라를 보유하고 있습니다.</em></p>
+                    <p class="sub_text fw_m t_center">
+                    </p>
+                    <p class="sub_text t_center">
+                        본사의 탄탄한 물류 인프라 시스템으로<br>
+                        높은 마진율을 창출합니다.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <ul class="lyr8_paging tab_paging fs_def t_center">
+        <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+    </ul>
+</div>
+<div class="layer9 over_h">
+    <p class="lyr9_title"><img src="<?=$root?>/img/page/fran/lyr9_title.png" alt="" class="w100"></p>
+    <div class="lyr9_slide">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr9_sl1.jpg" alt="" class="w100">
+                    <p class="sub_fs30 fw_b t_center">
+                        감성커피에서 시작된<br>
+                        <em>트렌디한 감성문구들</em>
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr9_sl2.jpg" alt="" class="w100">
+                    <p class="sub_fs30 fw_b t_center">
+                        이것이 바로 세계최초<br>
+                        <em>독특한 디자인 캐리어</em>
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr9_sl3.jpg" alt="" class="w100">
+                    <p class="sub_fs30 fw_b t_center">
+                        인건비 부담없이 혼자서<br>
+                        <em>1인 창업시대</em>
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr9_sl4.jpg" alt="" class="w100">
+                    <p class="sub_fs30 fw_b t_center">
+                        누구나 공감하는 감성적인<br>
+                        <em>네온문구</em>
+                    </p>
+                </li>
+                <li class="swiper-slide">
+                    <img src="<?=$root?>/img/page/fran/lyr9_sl5.jpg" alt="" class="w100">
+                    <p class="sub_fs30 fw_b t_center">
+                        톡톡튀는 감성커피만의<br>
+                        <em>음료들</em>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <ul class="lyr9_paging tab_paging fs_def t_center">
+        <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+    </ul>
+</div>
+<div class="layer10 chapters">
+    <p class="lyr10_title"><img src="<?=$root?>/img/page/fran/lyr10_title.png" alt="" class="w100"></p>
+    <p class="sub_text t_center">
+        가맹본부만 배불리는 부풀려진 창업비용,<br>
+        감성커피에는 없습니다.
+    </p>
+    <ul class="tabmenu fs_def">
+        <li class="on"><a href="#none">창업비용</a></li>
+        <li><a href="#none">창업절차</a></li>
+    </ul>
+    <div class="tab_conts">
+        <div class="over_s tab_cont1 tab_cont">
+            <div class="table_inner">
+                <p class="unit">8평 기준 (26.4㎡)</p>
+                <table class="lyr10_table">
+                    <colgroup>
+                        <col width="18.3%">
+                        <col width="49.1%">
+                        <col width="11.6%">
+                        <col width="20.8%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>구&nbsp;&nbsp;분</th><th>내&nbsp;&nbsp;용</th><th>금&nbsp;&nbsp;액</th><th>비&nbsp;&nbsp;고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>가맹비</td>
+                            <td class="content">상표 사용권 부여, 상권조사 및 영업권 보장</td>
+                            <td>3,000,000</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>교육비</td>
+                            <td class="content">매뉴얼 교육 및 점포 운영에 관한 교육 · 현장 실습비	</td>
+                            <td>2,000,000</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>주방기기 / 기물</td>
+                            <td class="content h_120">
+                                고급 커피머신, 자동 그라인더, 대용량 제빙기, 믹서기, 디지털 냉장고,<br>
+                                테이블 냉동고, 핫워터, 온수기,수동그라인더, 작업대, 컵디스펜서, 선반, 넉박스, 주방집기 포함
+                            </td>
+                            <td>19,800,000</td><td></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2 h_120">인테리어</td>
+                            <td class="content">목공사, 전기, 조명공사, 도장, 타일, 유리, 금속, 설비 공사 외</td>
+                            <td>11,500,000</td><td>추가 평당 125만원</td>
+                        </tr>
+                        <tr>
+                            <td class="content">설계 및 도면디자인</td>
+                            <td>2,000,000</td>
+                            <td>추가 평당 25만원</td>
+                        </tr>
+                        <tr>
+                            <td>가구</td>
+                            <td class="content">테이블 및 의자, 붙박이 쇼파</td>
+                            <td></td><td>별도</td>
+                        </tr>
+                        <tr>
+                            <td>홍보물·비품</td>
+                            <td class="content">유니폼, 홍보물, 배너, 전단, 쿠폰, 명함 외</td>
+                            <td>1,600,000</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>포스장비 / 음향설비	</td>
+                            <td class="content h_120">
+                                400만원 상당<br>
+                                듀얼모니터 포스시스템, 카드체크기, 프린터, 관리프로그램,<br>
+                                매장 음향장비일체(엠프,스피커포함)
+                            </td>
+                            <td></td>
+                            <td>무상지원</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL</td><td></td><td></td><td>39,900,000</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <p class="lyr10_extra">
+                    &middot;  별도사항 : 전기증설, 냉난방, 철거, 외관공사, 테라스, 어닝, 디스플레이, 이행보증금, 간판, 소방, 폴딩도어 등<br>
+                    &nbsp;&nbsp;&nbsp;위 사항은 예측된 수치로서 세부사항은 변동될 수 있습니다. (모등 비용은 VAT별도 금액입니다.)<br>
+                    &nbsp;&nbsp;&nbsp;위 조건은 점포상황(전기증설, 급/배수, 어닝, 테라스, 공사 등)에 따라 견적이 상이할 수 있습니다.
+                </p>
+            </div>
+        </div>
+        <div class="tab_cont2 tab_cont" style="display:none">
+            <img src="<?=$root?>/img/page/fran/steps.jpg" alt="" class="w100">
+        </div>
+    </div>
+</div>
+<div class="layer11 chapters">
+    <p class="lyr11_title"><img src="<?=$root?>/img/page/fran/inq_ttl.png" alt="섹시한 창업안내" class="w100"></p>
+    <p class="sub_text t_center">가맹본부만 배불리는 부풀려진 창업비용,<br>감성커피에는 없습니다.</p>
+<?
+$path_action = view3_link("||idx||page||select||search||skin","action&skin=root","",$end_path);//등록 클릭시 링크
+$board = 'inquiry_01';
+$view3_sca = '1n1_01';
+$view3_skin = 'view3_inquiry_00';
+$h2_title_sub = '가맹상담';
+$no_include = true;
+include(BOARD_INC.'/index.php');
+?>
+</div>
+
+<?if ($_REQUEST['type'] == 'view') {
+    $view_query = 'SELECT * FROM `'.TABLE_LEFT.'success_01` WHERE `view3_use`="1" AND `view3_idx`="'.(int)$_GET['idx'].'"; ';
+        $view_result = mysql_query($view_query);
+        if($view_result){
+            $view_data = mysql_fetch_assoc($view_result);
+            $next_command_01 = view3_html($view_data['view3_command_02']);
+            $view_img = array_filter(explode('||', $view_data['view3_file']));
+            $view_img = $view_img[3];
+            $bg_img = $pc.'/upload/success_01'.$view_img;
+            if($view_img =='' || !is_file(ROOT_INC.'/upload/success_01'.$view_img) ){
+                $bg_img = '';
+            }
+    ?>
+            <div class="clt_top_pop">
+                <div class="clt_top_vis rel">
+                    <div class="img_area bg" style="background-image:url('<?=$bg_img;?>')"></div>
+                    <div class="img_ovly bg abs"></div>
+                    <div class="text_area">
+                        <? if($view_data['view3_link']!=''){ ?>
+                        <div class="video_area">
+                            <? if($view_data['view3_video']=='YouTube'){ ?>
+                                <iframe type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/<?=$view_data['view3_link'];?>?autoplay=1&amp;playsinline=1&amp;rel=0" frameborder="0" ></iframe>
+                            <? } ?>
+                            <? if($view_data['view3_video']=='Vimeo'){ ?>
+                                <iframe type="text/html" width="100%" height="100%" src="https://player.vimeo.com/video/<?=$view_data['view3_link'];?>?autoplay=1&amp;byline=0&amp;portrait=0&amp;title=0" frameborder="0"></iframe>
+                            <? } ?>
+                        </div>
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="clt_top_text rel">
+                    <div class="clt_text_wrap">
+                        <p class="clt_txt_title"><?=view3_html($view_data['view3_title_02']);?></p>
+                        <div class="clt_txt_text text"><?=$next_command_01;?></div>
+                    </div>
+                </div>
+                <button type="button" class="clt_pop_close abs"><img src="<?=BOARD?>/view3_sns_00/img/modal_x.jpg" alt="닫기" class="w100"></button>
+            </div>
+<?
+    }
+}?>
+
+
+
+
+
+
+<script src="<?=$root?>/js/fran.js"></script>
+<script>
+var $scElement = $('html, body');
+var $wrapper = $('#wrap');
+var scrollTop;
+$('.lyr1_ex a').click(function(e){
+    $.ajax({
+        url : $(this).attr('href'),
+        data : {
+            idx : $(this).data('idx'),
+            type : 'view'
+        },
+        success : function(result){
+            scrollTop = $(window).scrollTop();
+            $scElement.css({overflow: 'hidden', position: 'fixed', width: '100%', height: '100%'});
+            TweenLite.set($wrapper, {y: scrollTop * -1});
+            $('.clt_top_pop', result).appendTo($('body'));
+        }
+    });
+    e.preventDefault();
+});
+
+new Swiper('.layer5 .swiper-container', {
+    speed: 1,
+    loop:1,
+    autoplay: {
+        delay: 3000,
+    },
+    effect: 'fade',
+    fadeEffect: {
+    	crossFade: true
+    },
+});
+
+$('body').on('click','.clt_pop_close',function(){
+    $scElement.css({overflow: 'auto', position: 'static', width: 'auto', height: 'auto'}).scrollTop(scrollTop);
+    TweenLite.set($wrapper, {clearProps: 'zIndex, transform'});
+    $(this).closest('.clt_top_pop').fadeOut(450,function(){
+        $(this).remove();
+    });
+});
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

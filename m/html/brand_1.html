@@ -1,0 +1,82 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.scroll_temp{position:absolute;left:0;top:15.9375vw;width:100%;height:0}
+.header_wrap{background:none}
+.header{border-bottom:1px solid rgba(255,255,255,0.3)}
+.header_wrap .header .h_btn_stm{background-image:url('../img/common/h_btn_stm_b1.png')}
+.header_wrap.wt_bg{background-color:#fff}
+.header_wrap.wt_bg .header .h_btn_stm{background-image:url('../img/common/h_btn_stm.png')}
+.sub_visual1{height:156.25vw;background-image:url('../img/page/brand/1/brand_1_visual.jpg')}
+.sub_visual_title{padding:60.625vw 0 4.6875vw}
+.sub_visual_text{font-size:3.75vw;letter-spacing:-0.05em;line-height:175%;color:#ccc}
+.lnb_wrap{top:156.25vw}
+
+.btn_a{display:block;width:31.25vw;height:9.375vw;font-family:'NotoSansKR-Light';font-size:3.125vw;letter-spacing:-0.05em;line-height:9.375vw;text-align:center}
+
+.layer1{height:140.625vw;background-image:url('../img/page/brand/1/layer1_bg.jpg')}
+.layer1 .layer1_title{padding:15.9375vw 0 5vw}
+.layer1 .layer1_text{color:#ccc}
+
+.layer2{height:140.625vw;background-image:url('../img/page/brand/1/layer2_bg.jpg')}
+.layer2 .layer2_title{padding:14.0625vw 0 3.75vw}
+.layer2 .layer2_text{color:#ccc}
+.layer2 .ikea{padding-top:3.4375vw;text-align:center}
+.layer2 .ikea span{display:inline-block;vertical-align:middle}
+.layer2 .ikea_logo{width:11.25vw}
+.layer2 .ikea_text{font-size:3.125vw;letter-spacing:-0.05em;color:#999}
+
+.layer3{height:140.625vw;background-image:url('../img/page/brand/1/layer3_bg.jpg')}
+.layer3 .layer3_title{padding:64.6875vw 0 5vw}
+.layer3 .layer3_text{color:#484848}
+.layer3 .btn_a{margin:6.25vw auto 0;border:1px solid rgba(0,0,0,0.3);color:#484848}
+
+.layer4{height:140.625vw;background-image:url('../img/page/brand/1/layer4_bg.jpg')}
+.layer4 .layer4_title{padding:15.625vw 0 5vw}
+.layer4 .layer4_text{color:#ccc}
+.layer4 .btn_a{margin:6.25vw auto 0;border:1px solid rgba(255,255,255,0.3);color:#ccc}
+</style>
+<div class="layer1 bg">
+    <p class="layer1_title"><img src="<?=$root?>/img/page/brand/1/layer1_title.png" alt="" class="w100"></p>
+    <p class="layer1_text sub_text t_center">
+        타 매장에는 없는 감성과 경험을 파는 카페입니다.<br>
+        지친 일상 속을 깨우는 즐거운 감성공간<br>
+        감성커피의 감성은 당신을 설레게 하는<br>
+        새로운 경험을 제공할 것입니다.
+    </p>
+</div>
+<div class="layer2 bg">
+    <p class="layer2_title"><img src="<?=$root?>/img/page/brand/1/layer2_title.png" alt="" class="w100"></p>
+    <p class="layer2_text sub_text t_center fw_m">
+        합리적인 가격에 최상의 고객경험을 제공하고자 합니다.<br>
+        레트로 & 모던을 키워드로 고객이 브랜드를 보고 들어와<br>
+        <em>커피를 마시고 나가는 일련의 모든 과정을<br>
+        세심하게 디자인합니다.</em>
+    </p>
+    <p class="ikea"><span class="ikea_logo"><img src="<?=$root?>/img/page/brand/1/ikea.jpg" alt="" class="w100"></span><span class="ikea_text">신세대 감각에 맞는 디자인과 저렴한 스웨덴 가구 브랜드</span></p>
+</div>
+<div class="layer3 bg">
+    <p class="layer3_title"><img src="<?=$root?>/img/page/brand/1/layer3_title.png" alt="" class="w100"></p>
+    <p class="layer3_text sub_text t_center">
+        국내 최고의 바리스타들이 조율하고<br>
+        개발한 커피를 경험할 수 있는 브랜드입니다.<br>
+        오리지널커피, 9가지 원두.  새로움을 추구하는<br>
+        고객 모두 즐길 수 있는, 커피가 맛있는 카페입니다.
+    </p>
+    <a href="<?=$root?>/html/brand_2.html#2" class="btn_a">트렌디한 메뉴</a>
+</div>
+<div class="layer4 bg">
+    <p class="layer4_title"><img src="<?=$root?>/img/page/brand/1/layer4_title.png" alt="" class="w100"></p>
+    <p class="layer4_text sub_text t_center">
+        감성을 중심으로 한 감성커피는 매장을 찾는<br>
+        고객님들이 공감하고<br>
+        위로 받을 수 있는 공간을 만들고자 노력합니다.
+    </p>
+    <a href="<?=$root?>/html/brand_3.html#3" class="btn_a">브랜드 독창성</a>
+</div>
+
+<script src="<?=$root?>/js/brand_1.js"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

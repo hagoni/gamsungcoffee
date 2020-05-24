@@ -1,0 +1,182 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title .grad{width:668px;background-image:url('../img/page/menu/02/grad_ttl.png')}
+
+.menu_tab{width:359px}
+.menu_tab.menu_fix{position:fixed;top:130px;}
+.menu_tab li{margin-bottom:40px}
+.menu_tab li:last-child{margin-bottom:0}
+.menu_tab li a{position:relative;display:inline-block;opacity:0.3}
+.menu_tab li a:before{opacity:0;content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background-color:#222}
+.menu_tab li.on a, .menu_tab li a:hover{opacity:1}
+.menu_tab li.on a:before, .menu_tab li a:hover:before{opacity:1}
+
+.tab_conts{padding-bottom:100px;}
+.tab_conts.cont_fix{margin-left:359px}
+/* .tab_cont{overflow:hidden;max-height:1578px} */
+.tab_cont{min-height:600px}
+.menu_list{width:856px}
+.menu_list li{position:relative;float:left;width:280px;height:384px;margin-right:8px;margin-bottom:8px;border:1px solid rgba(34,34,34,0.2);box-sizing:border-box}
+.menu_list li:nth-child(3n){margin-right:0}
+.menu_list .img{position:relative;height:277px}
+.menu_list .img:after{content:'';position:absolute;left:50%;bottom:-1px;width:258px;height:1px;background:rgba(34,34,34,0.3);margin-left:-129px}
+.menu_name{padding-top:28px;font-family:'NotoSansKR-Medium';font-size:20px;letter-spacing:-0.03em;color:#222}
+.menu_eng{padding-top:10px;font-size:16px;letter-spacing:-0.03em;color:#666}
+.menu_list .menu_info{position:absolute;left:0;top:0;width:100%;height:100%;background:#eee8de;opacity:0;
+-webkit-transition:opacity .2s;
+transition:opacity .2s
+}
+.menu_info .text_area{position:relative;padding-bottom:17px}
+.menu_info .text_area:before{content:'';position:absolute;left:50%;bottom:0;margin-left:-10px;width:20px;height:1px;background:rgba(0,0,0,0.3)}
+.menu_list .info_img{left:0;top:0;width:100%;height:100%;background-repeat:no-repeat;background-position:50% 100%;background-size:100%}
+.menu_list li:hover{border-color:transparent}
+.menu_info .menu_name{padding-top:50px}
+.menu_list li:hover .menu_info{opacity:1}
+.menu_list li:last-child,
+/* .menu_list li:nth-last-child(2), */
+.menu_list li:nth-last-child(3){margin-bottom:0}
+
+.mCSB_inside > .mCSB_container{margin-right:0}
+.mCSB_scrollTools{width:2px}
+</style>
+        <!-- 페이지 타이틀 start -->
+        <div class="page_title_area" data-motion-offset="1">
+            <div class="titles_wrap">
+                <p class="box_title">감성커피 메뉴소개</p>
+                <p class="page_title">
+                    <img src="<?=$root?>/img/page/menu/02/page_title.png" alt="트렌드가 땡긴다">
+                    <span class="grad grad_l el1_0"></span>
+                </p>
+            </div>
+        </div>
+        <!-- //페이지 타이틀 end -->
+        <!-- 메뉴 start -->
+        <div class="menu center over_h">
+            <div class="menu_tab f_left">
+                <li class="on"><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab1.png" alt="#전체메뉴"></a></li>
+<?
+$tab_sql = "select * from ".TABLE_LEFT."menu_cate_01 where view3_use = 1 order by view3_order asc";
+$tab_res = mysql_query($tab_sql);
+$tab_num = mysql_num_rows($tab_res);
+while ($tab_lst = mysql_fetch_assoc($tab_res)) {
+    $tab_img = explode('||',$tab_lst['view3_file']);
+?>
+    <li><a href="#none"><img src="<?=$root?>/upload/menu_cate_01<?=$tab_img[2]?>" alt="<?=$tab_lst['view3_title_01']?>"></a></li>
+<?
+}
+?>
+                <!-- <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab2.png" alt="#동화같은 블랜딩 커피"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab3.png" alt="#우리에게 익숙한 커피"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab4.png" alt="#맛있는 음료"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab5.png" alt="#여기에만 있는 음료"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab6.png" alt="#티마스터 커피"></a></li>
+                <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab7.png" alt="#진짜 감성과일쥬스"></a></li> -->
+                <!-- <li><a href="#none"><img src="<?=$root?>/img/page/menu/02/tab4.png" alt="디저트"></a></li> -->
+            </div>
+            <div class="tab_conts f_left">
+                <div class="tab_cont00 tab_cont">
+                    <ul id="allMenu" class="menu_list f_right clearfix t_center">
+<?
+$menu_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1 and view3_sca != '6' order by view3_order desc, view3_write_day desc";
+$menu_res = mysql_query($menu_sql);
+while ($menu_lst = mysql_fetch_assoc($menu_res)) {
+    $img = explode('||',$menu_lst['view3_file']);
+?>
+                        <li>
+                            <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$img[3]?>')"></div>
+                            <p class="menu_name"><?=$menu_lst['view3_title_01']?></p>
+                            <p class="menu_eng"><?=$menu_lst['view3_title_02']?></p>
+                            <div class="menu_info">
+                                <div class="info_img abs" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$img[4]?>')"></div>
+                                <div class="text_area">
+                                    <p class="menu_name"><?=$menu_lst['view3_title_01']?></p>
+                                    <p class="menu_eng"><?=$menu_lst['view3_title_02']?></p>
+                                </div>
+                            </div>
+                        </li>
+<?
+}
+?>
+                    </ul>
+                </div>
+<?
+$menu_sql = "select * from ".TABLE_LEFT."menu_01 where view3_use = 1";
+$menu_order = " order by view3_write_day desc";
+for ($i=1; $i <= $tab_num; $i++) {
+    ?>
+            <div class="tab_cont0<?=$i?> tab_cont" style="display:none">
+                <ul id="allMenu" class="menu_list f_right clearfix t_center">
+    <?
+    $cate_sql = "";
+    $cate_sql = $menu_sql." and view3_cate_idx = {$i}".$menu_order;
+    $cate_res = mysql_query($cate_sql);
+    while ($cate_lst = mysql_fetch_assoc($cate_res)) {
+        $cate_img = explode("||",$cate_lst['view3_file']);
+    ?>
+                    <li>
+                        <div class="img bg" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$cate_img[3]?>')"></div>
+                        <p class="menu_name"><?=$cate_lst['view3_title_01']?></p>
+                        <p class="menu_eng"><?=$cate_lst['view3_title_02']?></p>
+                        <div class="menu_info">
+                            <div class="info_img abs" style="background-image:url('<?=$request_root?>/upload/menu_01<?=$cate_img[4]?>')"></div>
+                            <div class="text_area">
+                                <p class="menu_name"><?=$cate_lst['view3_title_01']?></p>
+                                <p class="menu_eng"><?=$cate_lst['view3_title_02']?></p>
+                            </div>
+                        </div>
+                    </li>
+
+    <?}?>
+                </ul>
+            </div>
+    <?
+}
+?>
+    </div>
+</div>
+<script src="<?=$root?>/js/jquery.mCustomScrollbar.concat.min.js?<?=$time?>"></script>
+<script>
+// (function($) {
+//     $(window).on('load', function() {
+//         if($('#allMenu li').length > 4) {
+//             $('#allMenu').mCustomScrollbar({
+//                 autoHideScrollbar: true,
+//                 snapAmount: 30,
+//                 keyboard: {scrollAmount: 30},
+//                 mouseWheel: {
+//                     deltaFactor: 30,
+//                     preventDefault: true
+//                 },
+//                 scrollInertia: 0,
+//             });
+//         }
+//     });
+// }(jQuery));
+(function($) {
+    $(window).on('load', function() {
+        new YMotion([
+            [
+                {el: '.el1_0', set: {backgroundPositionX: "0"}, to: {backgroundPositionX: "668", ease: Back.Power0}, d: 2.0},
+            ],
+    	]).activate();
+    });
+
+    $(window).scroll(function () {
+        var scrollValue = $(document).scrollTop();
+        if (scrollValue > 740) {
+            $('.menu_tab').addClass('menu_fix');
+            $('.tab_conts').addClass('cont_fix');
+        } else {
+            $('.menu_tab').removeClass('menu_fix');
+            $('.tab_conts').removeClass('cont_fix');
+        }
+    });
+
+    new Tabbing ($('.menu_tab'),$('.tab_conts'));
+}(jQuery));
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

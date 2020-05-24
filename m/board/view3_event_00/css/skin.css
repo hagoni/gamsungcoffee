@@ -1,0 +1,8 @@
+.board_list_thumb{width:38%}
+.board_list_text{width:58%}
+
+
+.tabmenu li:nth-child(1) a{background-image:url('../img/event_tab1.png')}
+.tabmenu li:nth-child(2) a{background-image:url('../img/event_tab2.png')}
+.tabmenu li:nth-child(3){margin-top:3.125vw}
+.tabmenu li:nth-child(3) a{background-image:url('../img/event_tab3.png')}
